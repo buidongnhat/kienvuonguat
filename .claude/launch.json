@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kienvuong",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/tmp/kv-serve.py"],
+      "port": 8080,
+      "autoPort": false
+    }
+  ]
+}

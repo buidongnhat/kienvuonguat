@@ -1,0 +1,146 @@
+﻿.ipadmo-992 { /* ẩn nút menu */
+    display: none;
+}
+@media screen and (max-width: 1230px) {
+
+}
+
+@media screen and (max-width: 1199px) {
+    #menu > li > a {
+        padding: 0 10px;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+}
+
+@media (max-width: 992px) {
+    .ipadmo-992 { /* hiện menu đt */
+        display: block;
+    }
+
+    .desktop-992 { /* ẩn menu pc */
+        display: none !important;
+    }
+    #slogan {
+        font-size: 28px;
+    }
+    .kien-title {
+        font-size: 28px;
+        line-height: 44px;
+    }
+    .slide-jobs .item {
+        width: 260px;
+        height: 260px;
+    }
+    .slide-jobs.owl-carousel .owl-item .item .title {
+        font-size: 18px;
+    }
+    .about-wrapper .about-aside {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .about-wrapper .about-main {
+        width: 100%;
+    }
+    .main-news .image, .main-news .content, .main-news .image img {
+        width: 100%;
+    }
+    .form-contact {
+        padding: 30px;
+        background: #eee;
+    }
+        .form-contact .form-control {
+            width: 100%;
+        }
+}
+
+@media screen and (max-width: 767px) {
+    #logo {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+        #logo img {
+            width: 222px;
+        }
+    .history-tree .item {
+        width: 100%;
+    }
+    .history-tree .item:nth-child(2n+1) {
+        align-self: flex-start
+    }
+    .about-main .col-md-8 {
+        margin-bottom: 30px;
+    }
+    .about-main .col-md-4 {
+        text-align: center;
+    }
+    .home-news-update .item .image, .home-news-update .item .content {
+        display: block;
+    }
+        .home-news-update .item .image {
+            margin: 0 auto 15px;
+            max-width: 100%;
+        }
+    .home-news-update .item .content {
+        width: 100%;
+        padding-left: 0;
+    }
+    #footer {
+        padding: 30px 0;
+    }
+        #footer .ft-info > h1 {
+            padding-left: 0;
+        }
+        #footer .ft-info {
+            margin-bottom: 30px;
+        }
+    #footer .ft-info > ul {
+        padding: 0;
+    }
+        #footer .ft-info > ul:before {
+            display: none;
+        }
+        #footer .col-md-4 {
+            text-align: left !important;
+        }
+}
+
+@media screen and (max-width: 640px) {
+    .history-tree .item .year{
+        position: static;
+        margin-bottom: 10px;
+    }
+    .history-tree .item, .history-tree .item:nth-child(2n) {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+}
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 420px) {
+    .slide-jobs {
+        padding: 0 10px;
+    }
+        .slide-jobs .item {
+            width: 200px;
+            height: 200px;
+        }
+    .kien-title {
+        font-size: 20px;
+    }
+    #slogan {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+}

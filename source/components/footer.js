@@ -1,0 +1,238 @@
+(function () {
+  var isEn = window.location.pathname.indexOf('/en/') !== -1;
+
+  /* ===== BRANCHES — thêm chi nhánh mới vào đây ===== */
+  var branches = isEn ? [
+    {
+      name: 'Head Office',
+      address: '18 Street No. 1, Tan Tao Industrial Park, Binh Tan District, Ho Chi Minh City',
+      phone: '(028) 3750 5522',
+      fax: '(028) 3750 5599',
+      email: 'info@kienvuong.com'
+    },
+    {
+      name: 'Ha Noi Branch',
+      address: 'Lot 5, Thang Long Industrial Park, Dong Anh District, Ha Noi',
+      phone: '(024) 3955 1268',
+      fax: '(024) 3955 1269',
+      email: 'hanoi@kienvuong.com'
+    },
+    {
+      name: 'Da Nang Branch',
+      address: 'Hoa Khanh Industrial Park, Lien Chieu District, Da Nang',
+      phone: '(0236) 3731 234',
+      email: 'danang@kienvuong.com'
+    },
+    {
+      name: 'Can Tho Branch',
+      address: 'Tra Noc Industrial Park, Binh Thuy District, Can Tho',
+      phone: '(0292) 3842 567',
+      email: 'cantho@kienvuong.com'
+    },
+    {
+      name: 'Binh Duong Branch',
+      address: 'VSIP Industrial Park, Thuan An City, Binh Duong',
+      phone: '(0274) 3789 456',
+      email: 'binhduong@kienvuong.com'
+    },
+    {
+      name: 'Hai Phong Branch',
+      address: 'Nomura Industrial Park, An Duong District, Hai Phong',
+      phone: '(0225) 3742 890',
+      email: 'haiphong@kienvuong.com'
+    }
+  ] : [
+    {
+      name: 'Trụ Sở Chính',
+      address: '18 Đường số 1, KCN Tân Tạo, Quận Bình Tân, TP. Hồ Chí Minh',
+      phone: '(028) 3750 5522',
+      fax: '(028) 3750 5599',
+      email: 'info@kienvuong.com'
+    },
+    {
+      name: 'Chi Nhánh Hà Nội',
+      address: 'Lô 5, KCN Thăng Long, Huyện Đông Anh, Hà Nội',
+      phone: '(024) 3955 1268',
+      fax: '(024) 3955 1269',
+      email: 'hanoi@kienvuong.com'
+    },
+    {
+      name: 'Chi Nhánh Đà Nẵng',
+      address: 'KCN Hòa Khánh, Quận Liên Chiểu, Đà Nẵng',
+      phone: '(0236) 3731 234',
+      email: 'danang@kienvuong.com'
+    },
+    {
+      name: 'Chi Nhánh Cần Thơ',
+      address: 'KCN Trà Nóc, Quận Bình Thủy, Cần Thơ',
+      phone: '(0292) 3842 567',
+      email: 'cantho@kienvuong.com'
+    },
+    {
+      name: 'Chi Nhánh Bình Dương',
+      address: 'KCN VSIP, TP. Thuận An, Bình Dương',
+      phone: '(0274) 3789 456',
+      email: 'binhduong@kienvuong.com'
+    },
+    {
+      name: 'Chi Nhánh Hải Phòng',
+      address: 'KCN Nomura, Huyện An Dương, Hải Phòng',
+      phone: '(0225) 3742 890',
+      email: 'haiphong@kienvuong.com'
+    }
+  ];
+
+  var data = isEn ? {
+    company: 'Kien Vuong Company Limited',
+    desc: 'Leading distributor of specialty chemicals in Vietnam, serving industrial and non-industrial sectors since establishment.',
+    website: 'www.kienvuong.com',
+    quickLinksTitle: 'Quick Links',
+    quickLinks: [
+      { text: 'Home', href: '/en/' },
+      { text: 'About Us', href: '/en/about-us/history/' },
+      { text: 'News', href: '/en/news/' },
+      { text: 'Community', href: '/en/community/' },
+      { text: 'Contact', href: '/en/contact/' }
+    ],
+    industriesTitle: 'Industries',
+    industries: [
+      { text: 'Textile, Leather', href: '/en/industries/industrial/textile-leather/' },
+      { text: 'Paint, Coating, Ink', href: '/en/industries/industrial/paint-coating-ink/' },
+      { text: 'Aquaculture', href: '/en/industries/non-industrial/aquaculture-seafood-processing/' },
+      { text: 'Animal Feed', href: '/en/industries/non-industrial/animal-feed-veterinary/' },
+      { text: 'Pharmaceuticals', href: '/en/industries/non-industrial/pharmaceuticals/' },
+      { text: 'Food & Beverage', href: '/en/industries/non-industrial/food-beverage/' }
+    ],
+    branchesTitle: 'Our Offices',
+    followUs: 'Follow Us',
+    copyright: '© 2025 Kiến Vương. All Rights Reserved.'
+  } : {
+    company: 'Công Ty TNHH Kiến Vương',
+    desc: 'Nhà phân phối hàng đầu về hóa chất chuyên dụng tại Việt Nam, phục vụ các ngành công nghiệp và phi công nghiệp.',
+    website: 'www.kienvuong.com',
+    quickLinksTitle: 'Liên Kết',
+    quickLinks: [
+      { text: 'Trang Chủ', href: '/vi/' },
+      { text: 'Về Công Ty', href: '/vi/ve-cong-ty/lich-su-hinh-thanh/' },
+      { text: 'Tin Tức', href: '/vi/tin-tuc/' },
+      { text: 'Cộng Đồng', href: '/vi/cong-dong/' },
+      { text: 'Liên Hệ', href: '/vi/lien-he/' }
+    ],
+    industriesTitle: 'Ngành',
+    industries: [
+      { text: 'Dệt Nhuộm, Thuộc Da, Giày Da', href: '/vi/nganh/cong-nghiep/det-nhuom-thuoc-da-giay-da/' },
+      { text: 'Sơn, Lớp Phủ, Mực In', href: '/vi/nganh/cong-nghiep/son-lop-phu-muc-in/' },
+      { text: 'Nuôi Trồng Thủy Sản', href: '/vi/nganh/phi-cong-nghiep/nuoi-trong-che-bien-thuy-san/' },
+      { text: 'Thức Ăn Chăn Nuôi', href: '/vi/nganh/phi-cong-nghiep/thuc-an-chan-nuoi-thuoc-thu-y/' },
+      { text: 'Dược Phẩm', href: '/vi/nganh/phi-cong-nghiep/duoc-pham/' },
+      { text: 'Thực Phẩm & Đồ Uống', href: '/vi/nganh/phi-cong-nghiep/thuc-pham-thuc-uong/' }
+    ],
+    branchesTitle: 'Hệ Thống Văn Phòng',
+    followUs: 'Theo Dõi',
+    copyright: '© 2025 Kiến Vương. All Rights Reserved.'
+  };
+
+  var SVG = {
+    location: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>',
+    fax: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="12" height="6" rx="1"/><rect x="2" y="8" width="20" height="14" rx="2"/><path d="M6 18h4M14 18h4M10 14h4"/></svg>',
+    email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>',
+    web: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>'
+  };
+
+  function buildLinks(arr) {
+    return arr.map(function (item) {
+      return '<li><a href="' + item.href + '">' + item.text + '</a></li>';
+    }).join('');
+  }
+
+  function buildBranch(b, idx) {
+    var lines = [];
+    lines.push('<li>' + SVG.location + '<span>' + b.address + '</span></li>');
+    lines.push('<li>' + SVG.phone + '<a href="tel:' + b.phone.replace(/\s/g, '') + '">' + b.phone + '</a></li>');
+    if (b.fax) {
+      lines.push('<li>' + SVG.fax + '<span>' + b.fax + '</span></li>');
+    }
+    lines.push('<li>' + SVG.email + '<a href="mailto:' + b.email + '">' + b.email + '</a></li>');
+
+    return '<div class="kv-branch' + (idx === 0 ? ' active' : '') + '" data-branch="' + idx + '">' +
+      '<h5 class="kv-branch__name">' + b.name + '</h5>' +
+      '<ul class="kv-branch__details">' + lines.join('') + '</ul>' +
+    '</div>';
+  }
+
+  function buildBranchTabs(brs) {
+    return brs.map(function (b, idx) {
+      return '<button class="kv-branch-tab' + (idx === 0 ? ' active' : '') + '" data-branch="' + idx + '">' + b.name + '</button>';
+    }).join('');
+  }
+
+  var html =
+    '<div class="kv-footer">' +
+      '<div class="kv-footer__accent"></div>' +
+
+      /* Top: Logo + Company + Links grid */
+      '<div class="container">' +
+        '<div class="kv-footer__grid">' +
+
+          '<div class="kv-footer__col kv-footer__col--brand">' +
+            '<div class="kv-footer__logo">' +
+              '<img src="/media/b3chkwxv/logo.png" alt="Kiến Vương" />' +
+            '</div>' +
+            '<h3 class="kv-footer__company">' + data.company + '</h3>' +
+            '<p class="kv-footer__desc">' + data.desc + '</p>' +
+            '<div class="kv-footer__social">' +
+              '<div class="kv-footer__social-icons">' +
+                '<a href="#" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>' +
+                '<a href="#" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>' +
+                '<a href="https://' + data.website + '" target="_blank" aria-label="Website">' + SVG.web + '</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="kv-footer__col">' +
+            '<h4 class="kv-footer__heading">' + data.quickLinksTitle + '</h4>' +
+            '<ul class="kv-footer__links">' + buildLinks(data.quickLinks) + '</ul>' +
+          '</div>' +
+
+          '<div class="kv-footer__col">' +
+            '<h4 class="kv-footer__heading">' + data.industriesTitle + '</h4>' +
+            '<ul class="kv-footer__links">' + buildLinks(data.industries) + '</ul>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>' +
+
+      /* Branches block — full width section */
+      '<div class="kv-branches">' +
+        '<div class="container">' +
+          '<h4 class="kv-footer__heading">' + data.branchesTitle + '</h4>' +
+          '<div class="kv-branches__tabs">' + buildBranchTabs(branches) + '</div>' +
+          '<div class="kv-branches__content">' +
+            branches.map(function (b, i) { return buildBranch(b, i); }).join('') +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      /* Bottom bar */
+      '<div class="kv-footer__bottom">' +
+        '<div class="container">' +
+          '<span>' + data.copyright + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  var oldFooter = document.getElementById('footer');
+  if (oldFooter) {
+    oldFooter.outerHTML = html;
+  }
+
+  /* Branch tab interaction */
+  $(document).on('click', '.kv-branch-tab', function () {
+    var idx = $(this).data('branch');
+    $('.kv-branch-tab').removeClass('active');
+    $('.kv-branch').removeClass('active');
+    $(this).addClass('active');
+    $('.kv-branch[data-branch="' + idx + '"]').addClass('active');
+  });
+})();
