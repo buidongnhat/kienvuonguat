@@ -4,9 +4,8 @@
     {
       "name": "kienvuong",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/tmp/kv-serve.py"],
-      "port": 8080,
-      "autoPort": false
+      "runtimeArgs": ["/tmp/kv-serve2.py"],
+      "port": 8090
     }
   ]
 }

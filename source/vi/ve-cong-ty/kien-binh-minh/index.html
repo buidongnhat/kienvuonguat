@@ -1,251 +1,683 @@
-
 <!DOCTYPE html>
-
 <html>
+
 <head>
-<meta charset="utf-8"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<title>Kiến Bình Minh</title>
-<meta content="" name="description"/>
-<meta content="" itemprop="description" property="og:description"/>
-<meta content="https://kienvuong.com/vi/ve-cong-ty/kien-binh-minh/" itemprop="url" property="og:url"/>
-<meta content="" itemprop="headline" property="og:title"/>
-<meta content="article" property="og:type"/>
-<meta content="/images/no-image.png" itemprop="thumbnailUrl" property="og:image"/>
-<meta content="" name="keywords"/>
-<meta content="630" property="og:image:width"/>
-<meta content="380" property="og:image:height"/>
-<meta content="Kiến Vương" property="og:site_name"/>
-<link href="/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="/css/owl.carousel.min.css" rel="stylesheet"/>
-<link href="/css/fonts.css" rel="stylesheet"/>
-<link href="/css/site.css" rel="stylesheet"/>
-<link href="/css/site-respon.css" rel="stylesheet"/>
-<script src="/scripts/jquery.js"></script>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="/images/favicon.png" rel="icon" type="image/png" />
+  <title>Kiến Bình Minh</title>
+  <meta content="Lịch sử hình thành và phát triển của Công ty TNHH Kiến Vương" name="description" />
+  <meta content="Lịch sử hình thành và phát triển của Công ty TNHH Kiến Vương" itemprop="description"
+    property="og:description" />
+  <meta content="https://kienvuong.com/vi/ve-cong-ty/lich-su-hinh-thanh/" itemprop="url" property="og:url" />
+  <meta content="Lịch sử hình thành - Kiến Vương" itemprop="headline" property="og:title" />
+  <meta content="article" property="og:type" />
+  <meta content="/images/no-image.png" itemprop="thumbnailUrl" property="og:image" />
+  <meta content="" name="keywords" />
+  <meta content="630" property="og:image:width" />
+  <meta content="380" property="og:image:height" />
+  <meta content="Kiến Vương" property="og:site_name" />
+  <link href="/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="/css/owl.carousel.min.css" rel="stylesheet" />
+  <link href="/css/fonts.css" rel="stylesheet" />
+  <link href="/css/site.css" rel="stylesheet" />
+  <link href="/css/industries-section-v1.css" rel="stylesheet" />
+  <link href="/css/site-respon.css" rel="stylesheet" />
+  <script src="/scripts/jquery.js"></script>
+  <style>
+    /* ===== PREMIUM TIMELINE ===== */
+    .kv-timeline {
+      position: relative;
+      padding: 60px 0 40px;
+    }
+
+    /* Vertical center line */
+    .kv-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 0;
+      /* JS sẽ tính toán chiều cao chính xác */
+      width: 3px;
+      background: linear-gradient(180deg, #c03428 0%, #08854a 50%, #c03428 100%);
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    /* Each timeline row */
+    .kv-tl-row {
+      display: flex;
+      align-items: stretch;
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    /* Left and right columns */
+    .kv-tl-left,
+    .kv-tl-right {
+      width: 50%;
+      padding: 0 40px;
+    }
+
+    /* Odd rows: year on the left, card on the right */
+    .kv-tl-row:nth-child(odd) .kv-tl-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .kv-tl-row:nth-child(odd) .kv-tl-right {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Odd rows: content on the right */
+    .kv-tl-row:nth-child(even) .kv-tl-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .kv-tl-row:nth-child(even) .kv-tl-right {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Center dot — odd = red, even = green */
+    .kv-tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #c03428;
+      z-index: 2;
+      transition: all 0.4s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0 0 0 5px rgba(192, 52, 40, 0.12);
+    }
+
+    .kv-tl-row:nth-child(even) .kv-tl-dot {
+      border-color: #08854a;
+      box-shadow: 0 0 0 5px rgba(8, 133, 74, 0.12);
+    }
+
+    .kv-tl-row:hover .kv-tl-dot {
+      transform: translate(-50%, -50%) scale(1.4);
+      background: #c03428;
+      border-color: #c03428;
+    }
+
+    .kv-tl-row:nth-child(even):hover .kv-tl-dot {
+      background: #08854a;
+      border-color: #08854a;
+    }
+
+    /* Year badge — odd = red, even = green */
+    .kv-tl-year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 90px;
+      height: 44px;
+      border-radius: 22px;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #c03428, #e04a3e);
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(192, 52, 40, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .kv-tl-row:nth-child(even) .kv-tl-year {
+      background: linear-gradient(135deg, #08854a, #0da65e);
+      box-shadow: 0 4px 16px rgba(8, 133, 74, 0.25);
+    }
+
+    .kv-tl-row:hover .kv-tl-year {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Content card */
+    .kv-tl-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 28px;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      margin: 16px 0;
+    }
+
+    .kv-tl-card::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      border-right: none;
+      border-bottom: none;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    /* Odd rows: card is on the RIGHT → arrow points LEFT */
+    .kv-tl-row:nth-child(odd) .kv-tl-card::before {
+      left: -9px;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    /* Even rows: card is on the LEFT → arrow points RIGHT */
+    .kv-tl-row:nth-child(even) .kv-tl-card::before {
+      right: -9px;
+      transform: translateY(-50%) rotate(135deg);
+    }
+
+    .kv-tl-card:hover {
+      border-color: #e8e8e8;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Card title — odd = red, even = green */
+    .kv-tl-card__title {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #c03428;
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+
+    .kv-tl-row:nth-child(even) .kv-tl-card__title {
+      color: #08854a;
+    }
+
+    .kv-tl-card__desc {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Terminal dot at end */
+    .kv-tl-end {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding-top: 8px;
+    }
+
+    .kv-tl-end__dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c03428, #2E3486);
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0 4px 20px rgba(192, 52, 40, 0.3);
+      animation: kv-tl-pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes kv-tl-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(192, 52, 40, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 4px 32px rgba(192, 52, 40, 0.5);
+      }
+    }
+
+    .kv-tl-end__label {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #999;
+      margin-top: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Animate in */
+    .kv-tl-row {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .kv-tl-row.kv-tl-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .kv-timeline::before {
+        left: 24px;
+      }
+
+      .kv-tl-row {
+        flex-direction: column;
+        padding-left: 56px;
+      }
+
+      .kv-tl-left,
+      .kv-tl-right {
+        width: 100%;
+        padding: 0;
+        text-align: left !important;
+        justify-content: flex-start !important;
+      }
+
+      .kv-tl-dot {
+        left: 24px !important;
+        top: 24px;
+        transform: translate(-50%, 0) !important;
+      }
+
+      .kv-tl-row:hover .kv-tl-dot {
+        transform: translate(-50%, 0) scale(1.4) !important;
+      }
+
+      .kv-tl-row:nth-child(odd) .kv-tl-left {
+        order: 1;
+      }
+
+      .kv-tl-row:nth-child(odd) .kv-tl-right {
+        order: 2;
+      }
+
+      .kv-tl-card::before {
+        display: none;
+      }
+
+      .kv-tl-year {
+        height: 36px;
+        min-width: 76px;
+        font-size: 16px;
+      }
+
+      .kv-tl-card {
+        padding: 20px;
+      }
+
+      .kv-tl-end {
+        padding-left: 0;
+        margin-left: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div id="wrapper">
-<div id="wrapper-in">
-<div id="header">
-<div class="top-head">
-<div class="container">
-<a href="/vi/" id="logo">
-<img alt="Kiến Vương" src="/media/b3chkwxv/logo.png"/>
-</a>
-<ul class="desktop-992" id="menu">
-<li><a href="/vi/">Trang Chủ</a></li>
-<li>
-<a href="javascript:void(0);">Về Công Ty</a>
-<ul>
-<li>
-<a href="javascript:void(0);">Về Công Ty</a>
-<ul>
-<li><a href="/vi/ve-cong-ty/lich-su-hinh-thanh/">Lịch Sử Hình Thành</a></li>
-<li><a href="/vi/ve-cong-ty/tam-nhin-su-menh/">Tầm Nhìn &amp; Sứ Mệnh</a></li>
-<li><a href="/vi/ve-cong-ty/gia-tri-cot-loi/">Giá Trị Cốt Lõi</a></li>
-<li><a href="/vi/ve-cong-ty/he-thong-phan-phoi/">Hệ Thống Phân Phối</a></li>
-<li><a href="/vi/ve-cong-ty/kien-binh-minh/">Kiến Bình Minh</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="javascript:void(0);">Ngành</a>
-<ul>
-<li>
-<a href="javascript:void(0);">Công Nghiệp</a>
-<ul>
-<li><a href="/vi/nganh/cong-nghiep/det-nhuom-thuoc-da-giay-da/">Dệt Nhuộm, Thuộc Da, Giày Da</a></li>
-<li><a href="/vi/nganh/cong-nghiep/son-lop-phu-muc-in/">Sơn, Lớp Phủ, Mực In</a></li>
-</ul>
-</li>
-<li>
-<a href="javascript:void(0);">Phi Công Nghiệp</a>
-<ul>
-<li><a href="/vi/nganh/phi-cong-nghiep/nuoi-trong-che-bien-thuy-san/">Nuôi Trồng / Chế Biến Thủy Sản</a></li>
-<li><a href="/vi/nganh/phi-cong-nghiep/thuc-an-chan-nuoi-thuoc-thu-y/">Thức Ăn Chăn Nuôi / Thuốc Thú Y</a></li>
-<li><a href="/vi/nganh/phi-cong-nghiep/duoc-pham/">Dược Phẩm</a></li>
-<li><a href="/vi/nganh/phi-cong-nghiep/thuc-pham-thuc-uong/">Thực Phẩm &amp; Đồ Uống</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="/vi/tin-tuc/">Tin Tức</a></li>
-<li><a href="/vi/cong-dong/">Cộng Đồng</a></li>
-<li><a href="/vi/lien-he/">Liên Hệ</a></li>
-</ul>
-<div class="right-head desktop-992">
+  <div id="wrapper">
+    <div id="wrapper-in">
+      <div id="header">
+        <div class="top-head">
+          <div class="container">
+            <a href="/vi/" id="logo">
+              <img alt="Kiến Vương" src="/media/b3chkwxv/logo.png" />
+            </a>
+            <ul class="desktop-992" id="menu">
+              <li><a href="/vi/">Trang Chủ</a></li>
+              <li>
+                <a href="javascript:void(0);">Về Công Ty</a>
+                <ul>
+                  <li>
+                    <a href="javascript:void(0);">Về Công Ty</a>
+                    <ul>
+                      <li><a href="/vi/ve-cong-ty/lich-su-hinh-thanh/">Lịch Sử Hình Thành</a></li>
+                      <li><a href="/vi/ve-cong-ty/tam-nhin-su-menh/">Tầm Nhìn &amp; Sứ Mệnh</a></li>
+                      <li><a href="/vi/ve-cong-ty/gia-tri-cot-loi/">Giá Trị Cốt Lõi</a></li>
+                      <li><a href="/vi/ve-cong-ty/he-thong-phan-phoi/">Hệ Thống Phân Phối</a></li>
+                      <li><a href="/vi/ve-cong-ty/kien-binh-minh/">Kiến Bình Minh</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="javascript:void(0);">Ngành</a>
+                <ul>
+                  <li>
+                    <a href="javascript:void(0);">Công Nghiệp</a>
+                    <ul>
+                      <li><a href="/vi/nganh/cong-nghiep/det-nhuom-thuoc-da-giay-da/">Dệt Nhuộm, Thuộc Da, Giày
+                          Da</a></li>
+                      <li><a href="/vi/nganh/cong-nghiep/son-lop-phu-muc-in/">Sơn, Lớp Phủ, Mực In</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">Phi Công Nghiệp</a>
+                    <ul>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/nuoi-trong-che-bien-thuy-san/">Nuôi Trồng / Chế Biến
+                          Thủy Sản</a></li>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/thuc-an-chan-nuoi-thuoc-thu-y/">Thức Ăn Chăn Nuôi /
+                          Thuốc Thú Y</a></li>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/duoc-pham/">Dược Phẩm</a></li>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/thuc-pham-thuc-uong/">Thực Phẩm &amp; Đồ Uống</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/vi/tin-tuc/">Tin Tức</a></li>
+              <li><a href="/vi/cong-dong/">Cộng Đồng</a></li>
+              <li><a href="/vi/lien-he/">Liên Hệ</a></li>
+            </ul>
+            <div class="right-head desktop-992">
+              <div class="language-list">
+                <a class="lang-active" href="/vi/">VI</a>
+                <span class="lang-sep">|</span>
+                <a href="/en/">EN</a>
+              </div>
+              <a href="javascript:void(0);" class="search-icon-btn" id="searchToggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </a>
+            </div>
+            <a class="panel-a menu-mo ipadmo-992" data-position="true" data-type="false" href="#menumobile">
+              <span class="fa fa-bars"></span>
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="language-list">
-<a class="lang-active" href="/vi/">VI</a>
-<span class="lang-sep">|</span>
-<a href="/en/">EN</a>
-</div>
-<a href="javascript:void(0);" class="search-icon-btn" id="searchToggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
-</div>
-<a class="panel-a menu-mo ipadmo-992" data-position="true" data-type="false" href="#menumobile">
-<span class="fa fa-bars"></span>
-</a>
-</div>
-</div>
-</div>
+      <!-- Hero Banner — Article Detail Layout -->
 
+      <!-- Hero Banner -->
+      <div id="main-content" style="background:#f8f8f8;">
+        <div class="art-hero" id="art-hero">
+          <img src="/media/mwohgvkc/quá-trình-mắt-thần-2.jpg" alt="Kiến Bình Minh" onload="this.classList.add('loaded')"
+            style="object-position: center 20%;" />
+          <div class="art-hero__overlay"></div>
+        </div>
 
-<div id="main-content">
-<div class="container">
-<div class="bread-brumb-style-1">
-<a href="https://kienvuong.com/vi/">Trang chủ</a> <i class="fa fa-angle-right"></i>
-<a href="#" title="Về công ty">Về công ty</a> <i class="fa fa-angle-right"></i>
-<span>Kiến Bình Minh</span>
-</div>
-<div class="about-wrapper">
-<div class="about-main">
-<h1 class="kien-title title-underline">Kiến Bình Minh</h1>
-<div class="wrap-content" style="margin-bottom: 25px;">
-<div></div>
-<div></div>
-<div><span style="font-size: 12pt;"><img alt="" height="135" src="/media/c13dxnww/logo.jpg?width=173&amp;height=135" style="display: block; margin-left: auto; margin-right: auto;" width="173"/></span></div>
-<div><span style="font-size: 12pt;"></span></div>
-<div><span style="font-size: 12pt;">Mỗi một con người khi sinh ra đều có ước mơ và mưu cầu ước mơ hạnh phúc. Nhưng trong cuộc sống, không phải ai cũng có được may mắn là một con người lành lặn về thể xác và cửa sổ tâm hồn để đón chào ánh sáng buổi bình minh. Và Công ty TNHH Kiến Bình Minh ra đời để chia sẻ yêu thương vì một cộng đồng bớt khắc nghiệt hơn, nhân văn hơn, hạnh phúc hơn. Với thông điệp: “Cho, cho đi, cho nữa, và cho mãi”, Công ty TNHH Kiến Bình Minh đang nỗ lực để cho ra đời những sản phẩm hữu dụng, tiết kiệm và hiệu quả nhất.</span></div>
-<div><span style="font-size: 12pt;"></span></div>
-<div></div>
-<div>
-<h1 style="text-align: left;"><strong><span style="font-size: 14pt;">Lịch sử hình thành</span></strong></h1>
-<ul>
-<li><span style="font-size: 12pt;"><strong>09-2013</strong>: Công ty TNHH Kiến Bình Minh ra đời.</span></li>
-<li><span style="font-size: 12pt;"><strong>04-2013</strong>: Quỹ Kiến Bình Minh ra đời.</span></li>
-<li><span style="font-size: 12pt;"><strong>11-2012</strong>: Hoàn thiện phiên bản thứ 8 của Mắt Thần.</span></li>
-<li><span style="font-size: 12pt;"><strong>04-2012</strong>: Sự gặp nhau của hai con người qua một bài báo.</span></li>
-<li><span style="font-size: 12pt;"><strong>03-2012</strong>: Thử nghiệm phiên bản 1 tại Hội người khiếm thị Thủ Đức, TP. HCM.</span></li>
-<li><span style="font-size: 12pt;"><strong>02-2008</strong>: Những nghiên cứu ban đầu về Haptics.</span></li>
-</ul>
-</div>
-<div><span style="font-size: 12pt;"></span></div>
-<div>
-<h1><span style="font-size: 14pt;"><strong>Tầm nhìn - Sứ mệnh</strong></span></h1>
-<ul>
-<li><span style="font-size: 12pt;"><strong>Tầm nhìn</strong>: mang thiết bị Mắt Thần đến với tất cả người khiếm thị tại Việt Nam</span></li>
-<li><span style="font-size: 12pt;"><strong>Sứ mệnh</strong>: chia sẻ yêu thương vì một cộng đồng nhân văn hơn, hạnh phúc hơn</span></li>
-</ul>
-</div>
-<div></div>
-<div>
-<h1><span style="font-size: 14pt;"><strong>Ý nghĩa biểu tượng Kiến Bình Minh</strong></span></h1>
-<ul>
-<li><span style="font-size: 12pt;"><strong>Kiến</strong>: con kiến có những đặc tính: Thành thạo, Chuyên nghiệp, Năng động, Tinh thần đồng đội, Trung thực</span></li>
-<li><span style="font-size: 12pt;"><strong>Bình Minh</strong>: ánh sáng mang niềm tin và khát vọng sống cho đời</span></li>
-</ul>
-</div>
-<div></div>
-<div>
-<h1 style="text-align: left;"><strong><span style="font-size: 14pt;">Giới thiệu về MẮT THẦN<br/></span></strong></h1>
-</div>
-<div><img alt="" height="227" src="/media/0c2p1zu5/giới-thiệu-mắt-thần.jpg?width=373&amp;height=227" width="373"/></div>
-<div></div>
-<div class="main_box">
-<div class="main_content">
-<div class="noidung">
-<div>
-<div class="banner_index"></div>
-<div class="noidung">
-<div></div>
-<div><span style="font-size: 12pt;">Là thiết bị hỗ trợ việc đi lại cho người khiếm thị. Sản phẩm đã đạt giải Nhân Văn trong cuộc thi Robocon Techshow 2012, giải nhất Nhà sáng chế Việt Nam tuần 5 Đài truyền hình Việt Nam. Cho đến thời điểm hiện tại thì đây là thiết bị hiện đại nhất hỗ trợ cho người khiếm thị ở Việt Nam. Đeo kính vào, người khiếm thị sẽ cảm nhận và tránh được các vật cản giúp họ di chuyển dễ dàng và tự tin hơn. Chiếc mắt kính đã trải qua 9 lần thử nghiệm, kể cả trong phòng thí nghiệm với nhiều vật cản hay di chuyển thực tế bên ngoài. Mức giá ban đầu của sản phẩm này khi còn là “chiếc nón kỳ diệu” là 20 triệu đồng nhưng hiện nay nhóm nghiên cứu đã giảm kích thước cho gọn nhẹ hơn rất nhiều đó là chiếc mắt kính với giá rất thấp.</span></div>
-<div></div>
-<div></div>
-<div>
-<div class="tieude">
-<h1><strong><span style="font-size: 14pt;">Quá trình nghiên cứu MẮT THẦN</span></strong></h1>
-<p> </p>
-</div>
-<div class="banner_index"><img alt="" height="636" src="/media/mwohgvkc/quá-trình-mắt-thần-2.jpg?width=661&amp;height=636&amp;mode=max" width="661"/></div>
-</div>
-</div>
-</div>
-<div></div>
-<div></div>
-<div>
-<div class="tieude">
-<h1><strong><span style="font-size: 14pt;">Chứng nhận đạt được</span></strong></h1>
-</div>
-<ul>
-<li><span style="font-size: 14pt;">Giải Nhân Văn trong cuộc thi Robocon Techshow 2012</span></li>
-<li><span style="font-size: 14pt;">Giải nhất Nhà sáng chế Việt Nam tuần 5 Đài truyền hình Việt Nam</span></li>
-<li><span style="font-size: 14pt;">Là thiết bị hiện đại nhất hiên nay hỗ trợ cho người khiếm thị ở Việt Nam</span></li>
-</ul>
-</div>
-<div style="text-align: center;"><strong> </strong></div>
-<div class="space_20"></div>
-</div>
-</div>
-</div>
-<p> </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="footer">
-<div class="container">
-<div class="row">
-<div class="ft-info col-md-8">
-<h1>CÔNG TY TNHH KIẾN VƯƠNG</h1>
-<ul>
-<li class="ft-mail">info@kienvuong.com</li>
-<li class="ft-web">www.kienvuong.com</li>
-<li class="ft-link"></li>
-</ul>
-</div>
-<div class="col-md-4 text-right">
-                Follow us 
-                <a href="" target="_blank"><img alt="facebook" src="/images/social-fb.png"/></a>
-<a href="" target="_blank"><img alt="twitter" src="/images/social-tw.png"/></a>
-<a href="" target="_blank"><img alt="linkedin" src="/images/social-in.png"/></a>
-<p class="copyright">
-                    © 2022 - Kiến Vương. All Rights Reserved.
-                </p>
-</div>
-</div>
-</div>
-</div>
-<!--menumobile-->
-<div class="mobile-panel mobilep-left" id="menumobile">
-<div class="menu-in">
-<div class="menu-mobile">
-<div class="logo" style="margin-bottom: 10px">
-<a href="/" id="A2">
-<img alt="logo" class="img-fluid" src="/images/logo.png"/>
-</a>
-</div>
-<div class="language-list text-center" style="padding: 7px 0;">
-<a href="/vi/ve-cong-ty/kien-binh-minh/"><img alt="VN" src="/images/vi.png"/></a>
-<a href="/en/about-us/kien-binh-minh/"><img alt="En" src="/images/en.png"/></a>
-</div>
-<div class="search-box">
-<form action="/vi/tim-kiem/" method="get">
-<input name="keyword" placeholder="Tìm kiếm" type="text" value=""/>
-<input type="submit" value=""/>
-</form>
-</div>
-<ul class="menu-nav" id="menuMobiles">
-<li><a href="https://kienvuong.com/vi/">Trang chủ</a></li>
-</ul>
-</div>
-</div>
-</div>
-<!--menumobile-->
-<script src="/scripts/bootstrap.min.js"></script>
-<script src="/scripts/jquery.panel.mobile.js"></script>
-<script src="/scripts/owl.carousel.min.js"></script>
-<script src="/scripts/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
-<script src="/scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
-<!-- main js -->
-<script src="/scripts/jquery.main.js"></script>
-<!-- end main js -->
-<script src="/scripts/mega-menu.js"></script>
-<script src="/components/footer.js"></script>
+        <!-- Content Card -->
+        <div class="art-content-wrap">
+          <article class="art-content">
+            <nav class="art-breadcrumb">
+              <a href="/vi/">Trang chủ</a>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+              <a href="#">Về công ty</a>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+              <span>Kiến Bình Minh</span>
+            </nav>
+
+            <h1 class="art-content__title">Kiến Bình Minh</h1>
+            <div class="art-content__meta">
+              <time>Từ tháng 09-2013</time>
+            </div>
+
+            <div class="art-content__body kbm-custom-body">
+              <style>
+                .kbm-custom-body img {
+                  max-width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  margin: 20px 0;
+                }
+
+                .kbm-custom-body ul {
+                  padding-left: 20px;
+                  margin-bottom: 20px;
+                }
+
+                .kbm-custom-body li {
+                  margin-bottom: 10px;
+                  line-height: 1.6;
+                }
+
+                .kbm-custom-body h1 {
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: #1a1a1a;
+                  margin: 30px 0 15px;
+                }
+
+                .kbm-custom-body h1 strong {
+                  font-weight: 700;
+                  color: #c03428;
+                }
+
+                .kbm-custom-body .tieude h1 {
+                  margin-top: 40px;
+                  border-bottom: 2px solid #eee;
+                  padding-bottom: 10px;
+                  display: inline-block;
+                }
+              </style>
+
+              <div></div>
+              <div></div>
+              <div><span style="font-size: 12pt;"><img alt="" height="135" src="/media/c13dxnww/logo.jpg"
+                    style="display: block; margin-left: auto; margin-right: auto;" width="173" /></span></div>
+              <div><span style="font-size: 12pt;"></span></div>
+              <div><span style="font-size: 12pt;">Mỗi một con người khi sinh ra đều có ước mơ và mưu cầu ước mơ hạnh
+                  phúc. Nhưng trong cuộc sống, không phải ai cũng có được may mắn là một con người lành lặn về thể xác
+                  và cửa sổ tâm hồn để đón chào ánh sáng buổi bình minh. Và Công ty TNHH Kiến Bình Minh ra đời để chia
+                  sẻ yêu thương vì một cộng đồng bớt khắc nghiệt hơn, nhân văn hơn, hạnh phúc hơn. Với thông điệp: “Cho,
+                  cho đi, cho nữa, và cho mãi”, Công ty TNHH Kiến Bình Minh đang nỗ lực để cho ra đời những sản phẩm hữu
+                  dụng, tiết kiệm và hiệu quả nhất.</span></div>
+              <div><span style="font-size: 12pt;"></span></div>
+              <div></div>
+              <div>
+                <h1 style="text-align: left;"><strong><span style="font-size: 14pt;">Lịch sử hình thành</span></strong>
+                </h1>
+                <ul>
+                  <li><span style="font-size: 12pt;"><strong>09-2013</strong>: Công ty TNHH Kiến Bình Minh ra
+                      đời.</span></li>
+                  <li><span style="font-size: 12pt;"><strong>04-2013</strong>: Quỹ Kiến Bình Minh ra đời.</span></li>
+                  <li><span style="font-size: 12pt;"><strong>11-2012</strong>: Hoàn thiện phiên bản thứ 8 của Mắt
+                      Thần.</span></li>
+                  <li><span style="font-size: 12pt;"><strong>04-2012</strong>: Sự gặp nhau của hai con người qua một bài
+                      báo.</span></li>
+                  <li><span style="font-size: 12pt;"><strong>03-2012</strong>: Thử nghiệm phiên bản 1 tại Hội người
+                      khiếm thị Thủ Đức, TP. HCM.</span></li>
+                  <li><span style="font-size: 12pt;"><strong>02-2008</strong>: Những nghiên cứu ban đầu về
+                      Haptics.</span></li>
+                </ul>
+              </div>
+              <div><span style="font-size: 12pt;"></span></div>
+              <div>
+                <h1><span style="font-size: 14pt;"><strong>Tầm nhìn - Sứ mệnh</strong></span></h1>
+                <ul>
+                  <li><span style="font-size: 12pt;"><strong>Tầm nhìn</strong>: mang thiết bị Mắt Thần đến với tất cả
+                      người khiếm thị tại Việt Nam</span></li>
+                  <li><span style="font-size: 12pt;"><strong>Sứ mệnh</strong>: chia sẻ yêu thương vì một cộng đồng nhân
+                      văn hơn, hạnh phúc hơn</span></li>
+                </ul>
+              </div>
+              <div></div>
+              <div>
+                <h1><span style="font-size: 14pt;"><strong>Ý nghĩa biểu tượng Kiến Bình Minh</strong></span></h1>
+                <ul>
+                  <li><span style="font-size: 12pt;"><strong>Kiến</strong>: con kiến có những đặc tính: Thành thạo,
+                      Chuyên nghiệp, Năng động, Tinh thần đồng đội, Trung thực</span></li>
+                  <li><span style="font-size: 12pt;"><strong>Bình Minh</strong>: ánh sáng mang niềm tin và khát vọng
+                      sống cho đời</span></li>
+                </ul>
+              </div>
+              <div></div>
+              <div>
+                <h1 style="text-align: left;"><strong><span style="font-size: 14pt;">Giới thiệu về MẮT
+                      THẦN<br /></span></strong></h1>
+              </div>
+              <div><img alt="" height="227" src="/media/0c2p1zu5/giới-thiệu-mắt-thần.jpg?width=373&amp;height=227"
+                  width="373" /></div>
+              <div></div>
+              <div class="main_box">
+                <div class="main_content">
+                  <div class="noidung">
+                    <div>
+                      <div class="banner_index"></div>
+                      <div class="noidung">
+                        <div></div>
+                        <div><span style="font-size: 12pt;">Là thiết bị hỗ trợ việc đi lại cho người khiếm thị. Sản phẩm
+                            đã đạt giải Nhân Văn trong cuộc thi Robocon Techshow 2012, giải nhất Nhà sáng chế Việt Nam
+                            tuần 5 Đài truyền hình Việt Nam. Cho đến thời điểm hiện tại thì đây là thiết bị hiện đại
+                            nhất hỗ trợ cho người khiếm thị ở Việt Nam. Đeo kính vào, người khiếm thị sẽ cảm nhận và
+                            tránh được các vật cản giúp họ di chuyển dễ dàng và tự tin hơn. Chiếc mắt kính đã trải qua 9
+                            lần thử nghiệm, kể cả trong phòng thí nghiệm với nhiều vật cản hay di chuyển thực tế bên
+                            ngoài. Mức giá ban đầu của sản phẩm này khi còn là “chiếc nón kỳ diệu” là 20 triệu đồng
+                            nhưng hiện nay nhóm nghiên cứu đã giảm kích thước cho gọn nhẹ hơn rất nhiều đó là chiếc mắt
+                            kính với giá rất thấp.</span></div>
+                        <div></div>
+                        <div></div>
+                        <div>
+                          <div class="tieude">
+                            <h1><strong><span style="font-size: 14pt;">Quá trình nghiên cứu MẮT THẦN</span></strong>
+                            </h1>
+                            <p> </p>
+                          </div>
+                          <div class="banner_index"><img alt="" height="636"
+                              src="/media/mwohgvkc/quá-trình-mắt-thần-2.jpg?width=661&amp;height=636&amp;mode=max"
+                              width="661" /></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                      <div class="tieude">
+                        <h1><strong><span style="font-size: 14pt;">Chứng nhận đạt được</span></strong></h1>
+                      </div>
+                      <ul>
+                        <li><span style="font-size: 14pt;">Giải Nhân Văn trong cuộc thi Robocon Techshow 2012</span>
+                        </li>
+                        <li><span style="font-size: 14pt;">Giải nhất Nhà sáng chế Việt Nam tuần 5 Đài truyền hình Việt
+                            Nam</span></li>
+                        <li><span style="font-size: 14pt;">Là thiết bị hiện đại nhất hiên nay hỗ trợ cho người khiếm thị
+                            ở Việt Nam</span></li>
+                      </ul>
+                    </div>
+                    <div style="text-align: center;"><strong> </strong></div>
+                    <div class="space_20"></div>
+                  </div>
+                </div>
+              </div>
+              <p> </p>
+            </div>
+
+        </div>
+        </article>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="ft-info col-md-8">
+            <h1>CÔNG TY TNHH KIẾN VƯƠNG</h1>
+            <ul>
+              <li class="ft-mail">info@kienvuong.com</li>
+              <li class="ft-web">www.kienvuong.com</li>
+              <li class="ft-link"></li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-right">
+            Follow us
+            <a href="" target="_blank"><img alt="facebook" src="/images/social-fb.png" /></a>
+            <a href="" target="_blank"><img alt="twitter" src="/images/social-tw.png" /></a>
+            <a href="" target="_blank"><img alt="linkedin" src="/images/social-in.png" /></a>
+            <p class="copyright">© 2022 - Kiến Vương. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--menumobile-->
+    <div class="mobile-panel mobilep-left" id="menumobile">
+      <div class="menu-in">
+        <div class="menu-mobile">
+          <div class="logo" style="margin-bottom: 10px">
+            <a href="/" id="A2">
+              <img alt="logo" class="img-fluid" src="/images/logo.png" />
+            </a>
+          </div>
+          <div class="language-list text-center" style="padding: 7px 0;">
+            <a href="/vi/ve-cong-ty/kien-binh-minh/"><img alt="VN" src="/images/vi.png" /></a>
+            <a href="/en/about-us/kien-binh-minh/"><img alt="En" src="/images/en.png" /></a>
+          </div>
+          <div class="search-box">
+            <form action="/vi/tim-kiem/" method="get">
+              <input name="keyword" placeholder="Tìm kiếm" type="text" value="" />
+              <input type="submit" value="" />
+            </form>
+          </div>
+          <ul class="menu-nav" id="menuMobiles">
+            <li><a href="/vi/">Trang chủ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--menumobile-->
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/jquery.panel.mobile.js"></script>
+    <script src="/scripts/owl.carousel.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="/scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <!-- main js -->
+    <script src="/scripts/jquery.main.js"></script>
+    <!-- end main js -->
+    <script src="/scripts/mega-menu.js"></script>
+    <script src="/components/industries-section-v1.js"></script>
+    <script src="/components/footer.js"></script>
+
+    <!-- Timeline scroll animation -->
+    <script>
+      $(document).ready(function () {
+        // Tính chiều cao đường kẻ dọc: dừng đúng tâm kv-tl-end__dot
+        var $timeline = $('.kv-timeline');
+        var $endDot = $('.kv-tl-end__dot');
+        if ($timeline.length && $endDot.length) {
+          var lineHeight = $endDot.offset().top - $timeline.offset().top + ($endDot.outerHeight() / 2);
+          $timeline[0].style.setProperty('--tl-line-height', lineHeight + 'px');
+          document.querySelector('.kv-timeline').style.setProperty('--tl-line-height', lineHeight + 'px');
+          // Set via pseudo-element workaround
+          var styleEl = document.createElement('style');
+          styleEl.textContent = '.kv-timeline::before { height: ' + lineHeight + 'px !important; }';
+          document.head.appendChild(styleEl);
+        }
+
+        // Intersection Observer for scroll-in animation
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('kv-tl-visible');
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.kv-tl-row').forEach(function (row) {
+          observer.observe(row);
+        });
+      });
+    </script>
+  </div>
+  </div>
 </body>
+
 </html>

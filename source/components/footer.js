@@ -5,80 +5,80 @@
   var branches = isEn ? [
     {
       name: 'Head Office',
-      address: '18 Street No. 1, Tan Tao Industrial Park, Binh Tan District, Ho Chi Minh City',
-      phone: '(028) 3750 5522',
-      fax: '(028) 3750 5599',
-      email: 'info@kienvuong.com'
+      address: 'Lot 22, Street 7, Tan Tao Industrial Park, Tan Tao A Ward, Binh Tan District, Ho Chi Minh City.',
+      phone: '028 3754 3624',
+      fax: '028 3754 3625',
+      email: 'tuyendung@kienvuong.com',
+      website: 'www.kienvuong.com'
     },
     {
       name: 'Ha Noi Branch',
-      address: 'Lot 5, Thang Long Industrial Park, Dong Anh District, Ha Noi',
-      phone: '(024) 3955 1268',
-      fax: '(024) 3955 1269',
-      email: 'hanoi@kienvuong.com'
+      address: 'E15- Pandora Complex Project, 53 Trieu Khuc Street, Thanh Xuan Nam Ward, Thanh Xuan District, Ha Noi.',
+      phone: '024 3784 2024',
+      fax: '024 3784 2025'
     },
     {
-      name: 'Da Nang Branch',
-      address: 'Hoa Khanh Industrial Park, Lien Chieu District, Da Nang',
-      phone: '(0236) 3731 234',
-      email: 'danang@kienvuong.com'
+      name: 'Can Tho Rep. Office',
+      address: 'Lot A3, 20-21 Nam Khang Housing Project, Hung Thanh Ward, Cai Rang District, Can Tho City.',
+      phone: '0292 3836 456',
+      fax: '0292 3740 471'
     },
     {
-      name: 'Can Tho Branch',
-      address: 'Tra Noc Industrial Park, Binh Thuy District, Can Tho',
-      phone: '(0292) 3842 567',
-      email: 'cantho@kienvuong.com'
+      name: 'Bac Ninh Branch',
+      address: 'Lot C2-2, N2 Street, Dai Dong Hoan Son Industrial Park, Tien Du District, Bac Ninh Province.',
+      phone: '0222 384 8131',
+      fax: '0222 3848 130'
     },
     {
-      name: 'Binh Duong Branch',
-      address: 'VSIP Industrial Park, Thuan An City, Binh Duong',
-      phone: '(0274) 3789 456',
-      email: 'binhduong@kienvuong.com'
+      name: 'Nha Trang Rep. Office',
+      address: '35 Cao Ba Quat, Phuoc Hoa Ward, Nha Trang City, Khanh Hoa Province.',
+      phone: '0258 3871 145/6',
+      fax: '0258 3871 206'
     },
     {
-      name: 'Hai Phong Branch',
-      address: 'Nomura Industrial Park, An Duong District, Hai Phong',
-      phone: '(0225) 3742 890',
-      email: 'haiphong@kienvuong.com'
+      name: 'Da Nang Rep. Office',
+      address: '35 Ngo Quyen, Tho Quang Ward, Son Tra District, Da Nang City.',
+      phone: '0236 3955 784/5',
+      fax: '0236 3955 786'
     }
   ] : [
     {
-      name: 'Trụ Sở Chính',
-      address: '18 Đường số 1, KCN Tân Tạo, Quận Bình Tân, TP. Hồ Chí Minh',
-      phone: '(028) 3750 5522',
-      fax: '(028) 3750 5599',
-      email: 'info@kienvuong.com'
+      name: 'Công ty TNHH Kiến Vương',
+      address: 'Lô 22, Đường số 7, KCN Tân Tạo, Phường Tân Tạo A, Quận Bình Tân, Thành phố Hồ Chí Minh.',
+      phone: '028 3754 3624',
+      fax: '028 3754 3625',
+      email: 'tuyendung@kienvuong.com',
+      website: 'www.kienvuong.com'
     },
     {
-      name: 'Chi Nhánh Hà Nội',
-      address: 'Lô 5, KCN Thăng Long, Huyện Đông Anh, Hà Nội',
-      phone: '(024) 3955 1268',
-      fax: '(024) 3955 1269',
-      email: 'hanoi@kienvuong.com'
+      name: 'Chi nhánh Hà Nội',
+      address: 'E15- Dự án Khu Tổ Hợp Pandora, số 53 phố Triều Khúc, Phường Thanh Xuân Nam, Quận Thanh Xuân, Hà Nội.',
+      phone: '024 3784 2024',
+      fax: '024 3784 2025'
     },
     {
-      name: 'Chi Nhánh Đà Nẵng',
-      address: 'KCN Hòa Khánh, Quận Liên Chiểu, Đà Nẵng',
-      phone: '(0236) 3731 234',
-      email: 'danang@kienvuong.com'
+      name: 'Văn phòng đại diện Cần Thơ',
+      address: 'Lô A3, 20-21 Dự án Khu nhà ở Nam Khang, Phường Hưng Thạnh, Quận Cái Răng, Thành phố Cần Thơ.',
+      phone: '0292 3836 456',
+      fax: '0292 3740 471'
     },
     {
-      name: 'Chi Nhánh Cần Thơ',
-      address: 'KCN Trà Nóc, Quận Bình Thủy, Cần Thơ',
-      phone: '(0292) 3842 567',
-      email: 'cantho@kienvuong.com'
+      name: 'Chi nhánh Bắc Ninh',
+      address: 'Lô C2-2, Đường N2, KCN Đại Đồng Hoàn Sơn, Huyện Tiên Du, Tỉnh Bắc Ninh.',
+      phone: '0222 384 8131',
+      fax: '0222 3848 130'
     },
     {
-      name: 'Chi Nhánh Bình Dương',
-      address: 'KCN VSIP, TP. Thuận An, Bình Dương',
-      phone: '(0274) 3789 456',
-      email: 'binhduong@kienvuong.com'
+      name: 'Văn phòng đại diện Nha Trang',
+      address: '35 Cao Bá Quát, Phường Phước Hòa, Thành phố Nha Trang, Tỉnh Khánh Hòa.',
+      phone: '0258 3871 145/6',
+      fax: '0258 3871 206'
     },
     {
-      name: 'Chi Nhánh Hải Phòng',
-      address: 'KCN Nomura, Huyện An Dương, Hải Phòng',
-      phone: '(0225) 3742 890',
-      email: 'haiphong@kienvuong.com'
+      name: 'Văn phòng đại diện Đà Nẵng',
+      address: '35 Ngô Quyền, Phường Thọ Quang, Quận Sơn Trà, Thành phố Đà Nẵng.',
+      phone: '0236 3955 784/5',
+      fax: '0236 3955 786'
     }
   ];
 
@@ -149,11 +149,16 @@
   function buildBranch(b, idx) {
     var lines = [];
     lines.push('<li>' + SVG.location + '<span>' + b.address + '</span></li>');
-    lines.push('<li>' + SVG.phone + '<a href="tel:' + b.phone.replace(/\s/g, '') + '">' + b.phone + '</a></li>');
+    lines.push('<li>' + SVG.phone + '<a href="tel:' + b.phone.replace(/[\s\/]/g, '') + '">' + b.phone + '</a></li>');
     if (b.fax) {
       lines.push('<li>' + SVG.fax + '<span>' + b.fax + '</span></li>');
     }
-    lines.push('<li>' + SVG.email + '<a href="mailto:' + b.email + '">' + b.email + '</a></li>');
+    if (b.email) {
+      lines.push('<li>' + SVG.email + '<a href="mailto:' + b.email + '">' + b.email + '</a></li>');
+    }
+    if (b.website) {
+      lines.push('<li>' + SVG.web + '<a href="https://' + b.website + '" target="_blank">' + b.website + '</a></li>');
+    }
 
     return '<div class="kv-branch' + (idx === 0 ? ' active' : '') + '" data-branch="' + idx + '">' +
       '<h5 class="kv-branch__name">' + b.name + '</h5>' +

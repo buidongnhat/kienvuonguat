@@ -21,6 +21,17 @@ function onFailure() {
 //function===============================================================================================
 /*=============================fun=========================================*/
 function myfunload() {
+    // Active nav item based on current page
+    var path = window.location.pathname;
+    $('#menu > li > a').each(function () {
+        var href = $(this).attr('href');
+        if (href && href !== 'javascript:void(0);') {
+            if (path === href || (href !== '/vi/' && href !== '/en/' && path.indexOf(href) === 0)) {
+                $(this).parent().addClass('active');
+            }
+        }
+    });
+
     $(".panel-a").mobilepanel();
     $("#menu > li").not(".li-home").clone().appendTo($("#menuMobiles"));
     $("#menuMobiles input").remove();
