@@ -25,6 +25,7 @@
   <link href="/css/site.css?v=999" rel="stylesheet" />
   <link href="/css/industries-section-v1.css" rel="stylesheet" />
   <link href="/css/site-respon.css" rel="stylesheet" />
+  <link href="/css/news-page.css?v=999" rel="stylesheet" />
   <script src="/scripts/jquery.js"></script>
 </head>
 
@@ -60,18 +61,15 @@
                   <li>
                     <a href="javascript:void(0);">Công Nghiệp</a>
                     <ul>
-                      <li><a href="/vi/nganh/cong-nghiep/det-nhuom-thuoc-da-giay-da/">Dệt Nhuộm, Thuộc Da, Giày Da</a>
-                      </li>
+                      <li><a href="/vi/nganh/cong-nghiep/det-nhuom-thuoc-da-giay-da/">Dệt Nhuộm, Thuộc Da, Giày Da</a></li>
                       <li><a href="/vi/nganh/cong-nghiep/son-lop-phu-muc-in/">Sơn, Lớp Phủ, Mực In</a></li>
                     </ul>
                   </li>
                   <li>
                     <a href="javascript:void(0);">Phi Công Nghiệp</a>
                     <ul>
-                      <li><a href="/vi/nganh/phi-cong-nghiep/nuoi-trong-che-bien-thuy-san/">Nuôi Trồng / Chế Biến Thủy
-                          Sản</a></li>
-                      <li><a href="/vi/nganh/phi-cong-nghiep/thuc-an-chan-nuoi-thuoc-thu-y/">Thức Ăn Chăn Nuôi / Thuốc
-                          Thú Y</a></li>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/nuoi-trong-che-bien-thuy-san/">Nuôi Trồng / Chế Biến Thủy Sản</a></li>
+                      <li><a href="/vi/nganh/phi-cong-nghiep/thuc-an-chan-nuoi-thuoc-thu-y/">Thức Ăn Chăn Nuôi / Thuốc Thú Y</a></li>
                       <li><a href="/vi/nganh/phi-cong-nghiep/duoc-pham/">Dược Phẩm</a></li>
                       <li><a href="/vi/nganh/phi-cong-nghiep/thuc-pham-thuc-uong/">Thực Phẩm &amp; Đồ Uống</a></li>
                     </ul>
@@ -83,7 +81,6 @@
               <li><a href="/vi/lien-he/">Liên Hệ</a></li>
             </ul>
             <div class="right-head desktop-992">
-
               <div class="language-list">
                 <a class="lang-active" href="/vi/">VI</a>
                 <span class="lang-sep">|</span>
@@ -104,13 +101,50 @@
       </div>
 
 
-      <div id="main-content" style="background:#f8f8f8;">
-        <div class="container">
-          <div class="bread-brumb-style-1">
-            <a href="https://kienvuong.com/vi/">Trang chủ</a> <i class="fa fa-angle-right"></i>
-            <span>Cộng đồng</span>
+      <!-- Page Header with Image Background + Category Chips -->
+      <div class="nph-hero">
+        <img class="nph-hero__img" src="/media/ykfdfph1/1.jpg" alt="Cộng đồng Kiến Vương" />
+        <div class="nph-hero__overlay"></div>
+        <div class="nph-hero__content">
+          <div class="container">
+            <div class="nph-hero__breadcrumb">
+              <a href="/vi/">Trang chủ</a>
+              <i class="fa fa-angle-right"></i>
+              <span>Cộng đồng</span>
+            </div>
+            <h1 class="nph-hero__title">Cộng Đồng</h1>
+            <p class="nph-hero__subtitle">Hoạt động cộng đồng và trách nhiệm xã hội của đại gia đình Kiến&nbsp;Vương</p>
+            <!-- Category Chips -->
+            <div class="nph-chips" id="nph-chips">
+              <button class="nph-chip nph-chip--active" data-filter="all">Tất cả</button>
+              <button class="nph-chip" data-filter="community">Cộng Đồng</button>
+              <button class="nph-chip" data-filter="events">Sự Kiện</button>
+            </div>
           </div>
-          <h1 class="kien-title title-underline">Cộng đồng</h1>
+        </div>
+      </div>
+
+      <!-- Article List Section -->
+      <div id="main-content" style="background:#f8f8f8; padding-top: 52px; padding-bottom: 52px;">
+        <div class="container">
+
+          <!-- Toolbar: Search + Sort -->
+          <div class="nph-toolbar">
+            <div class="nph-search">
+              <i class="fa fa-search"></i>
+              <input type="text" id="nph-search-input" placeholder="Tìm kiếm bài viết..." />
+            </div>
+            <div class="nph-sort">
+              <label>Sắp xếp:</label>
+              <select id="nph-sort-select">
+                <option value="newest">Mới nhất</option>
+                <option value="oldest">Cũ nhất</option>
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+              </select>
+            </div>
+          </div>
+
           <div class="home-news news-cate">
             <div class="row" id="news-list-container">
             </div>
@@ -118,6 +152,7 @@
           <div class="pager text-center" id="news-list-pager"></div>
         </div>
       </div>
+
       <div id="footer">
         <div class="container">
           <div class="row">
@@ -180,8 +215,10 @@
       <script src="/components/industries-section-v1.js"></script>
       <script src="/components/footer.js"></script>
       <script src="/components/news-section.js?v=999"></script>
-<script src="/components/articles-db.js"></script>
-<script src="/components/list-loader.js?v=999"></script>
+      <script src="/components/articles-db.js"></script>
+      <script src="/components/list-loader.js?v=999"></script>
+      <script src="/components/news-page-tools.js?v=999"></script>
+      <script src="/components/feedback.js"></script>
 </body>
 
 </html>

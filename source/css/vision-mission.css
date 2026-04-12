@@ -1,0 +1,226 @@
+/* ================================================================= */
+/* VISION & MISSION — inside article detail layout                   */
+/* ================================================================= */
+
+/* ── Vision / Mission Block ── */
+.vm-block {
+    padding: 36px 0;
+    text-align: center;
+}
+
+.vm-block__header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.vm-block__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.vm-block__icon--green {
+    background: rgba(8, 133, 74, 0.08);
+    color: #08854a;
+}
+
+.vm-block__icon--red {
+    background: rgba(192, 52, 40, 0.08);
+    color: #c03428;
+}
+
+.vm-block__label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.vm-block__label--green {
+    color: #08854a;
+}
+
+.vm-block__label--red {
+    color: #c03428;
+}
+
+.vm-block__title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+    color: #1a1a2e !important;
+    margin: 0 auto 16px !important;
+    padding: 0 !important;
+    border: none !important;
+    max-width: 640px;
+}
+
+.vm-block__title em {
+    font-style: italic;
+    color: #444;
+}
+
+.vm-block__desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.vm-block__desc strong {
+    color: #1a1a2e;
+    font-weight: 600;
+}
+
+/* ── Highlights ── */
+.vm-hl--green {
+    color: #08854a;
+}
+
+.vm-hl--red {
+    color: #c03428;
+}
+
+/* ── Decorative Divider ── */
+.vm-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.vm-divider span {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+}
+
+.vm-divider i {
+    color: #ccc;
+    font-size: 8px;
+}
+
+/* ================================================================= */
+/* PILLARS — inline inside article body                              */
+/* ================================================================= */
+.vm-pillars-inline {
+    padding-top: 36px;
+}
+
+.vm-pillars-inline h2 {
+    text-align: center;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #1a1a2e !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.vm-pillars-inline__sub {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 36px 0;
+}
+
+.vm-pillars-inline__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* ── Single pill card ── */
+.vm-pill {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.04);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.vm-pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,.07);
+}
+
+.vm-pill__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 22px;
+    transition: transform .3s ease;
+}
+
+.vm-pill:hover .vm-pill__icon {
+    transform: scale(1.1);
+}
+
+.vm-pill__icon--red {
+    background: rgba(192, 52, 40, 0.08);
+    color: #c03428;
+}
+
+.vm-pill__icon--green {
+    background: rgba(8, 133, 74, 0.08);
+    color: #08854a;
+}
+
+.vm-pill h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #1a1a2e !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.vm-pill p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #777;
+    margin: 0;
+}
+
+/* ================================================================= */
+/* RESPONSIVE                                                        */
+/* ================================================================= */
+@media (max-width: 576px) {
+    .vm-block__title {
+        font-size: 20px !important;
+    }
+    .vm-pillars-inline__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .vm-pill {
+        padding: 22px 18px;
+    }
+    .vm-block__header {
+        gap: 10px;
+    }
+    .vm-block__icon {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+}
