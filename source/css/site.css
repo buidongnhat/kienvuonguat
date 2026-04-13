@@ -275,8 +275,13 @@ a:focus {
     background: #fff;
 }
 
-#bannerPrev { left: 24px; }
-#bannerNext { right: 24px; }
+#bannerPrev {
+    left: 24px;
+}
+
+#bannerNext {
+    right: 24px;
+}
 
 .font-raleway {
     font-family: 'Noto Sans';
@@ -2293,6 +2298,7 @@ ul.ul-job ul li.active a:after {
     visibility: hidden;
     pointer-events: none;
 }
+
 .mobile-panel.open-in {
     visibility: visible;
     pointer-events: auto;
@@ -2934,7 +2940,7 @@ ul.ul-job ul li.active a:after {
 .kv-article-nav-wrap__inner {
     max-width: 1140px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
