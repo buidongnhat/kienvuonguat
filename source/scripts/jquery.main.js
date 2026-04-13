@@ -50,7 +50,26 @@ function myfunload() {
         $(this).parent().toggleClass("active");
     });
     /*=====banner-slider=====*/
-    $(".slide-banners").owlCarousel({
+    var $bannerContent = $('.kv-banner-content');
+    var $bannerTitle = $bannerContent.find('.kv-banner-content__title');
+    var $bannerDesc = $bannerContent.find('.kv-banner-content__desc');
+    var $bannerBtn = $bannerContent.find('.kv-banner-content__btn');
+
+    function updateBannerContent(e) {
+        var $item = $(e.target).find('.owl-item.active .item');
+        var title = $item.data('title') || '';
+        var desc = $item.data('desc') || '';
+        var link = $item.data('link') || '#';
+        $bannerContent.removeClass('kv-banner-content--visible');
+        setTimeout(function () {
+            $bannerTitle.text(title);
+            $bannerDesc.text(desc);
+            $bannerBtn.attr('href', link);
+            $bannerContent.addClass('kv-banner-content--visible');
+        }, 180);
+    }
+
+    var $slideBanners = $(".slide-banners").owlCarousel({
         items: 1,
         loop: true,
         nav: false,
@@ -59,31 +78,15 @@ function myfunload() {
         autoplaytimeout: 10000,
         autoplayHoverPause: true
     });
+
+    $slideBanners.on('initialized.owl.carousel translated.owl.carousel', updateBannerContent);
+    $slideBanners.trigger('initialized.owl.carousel');
+
     $('#bannerPrev').on('click', function () {
-        $('.slide-banners').trigger('prev.owl.carousel');
+        $slideBanners.trigger('prev.owl.carousel');
     });
     $('#bannerNext').on('click', function () {
-        $('.slide-banners').trigger('next.owl.carousel');
-    });
-
-    function updateBannerContent($owl) {
-        var $active = $owl.find('.owl-item.active .item');
-        var title = $active.data('title') || '';
-        var desc = $active.data('desc') || '';
-        var link = $active.data('link') || '#';
-        var $content = $('#bannerContent');
-        $content.removeClass('is-visible');
-        setTimeout(function () {
-            $content.find('.kv-banner-content__title').text(title);
-            $content.find('.kv-banner-content__desc').text(desc);
-            $content.find('.kv-banner-content__btn').attr('href', link);
-            $content.addClass('is-visible');
-        }, 50);
-    }
-
-    var $banners = $('.slide-banners');
-    $banners.on('initialized.owl.carousel translated.owl.carousel', function () {
-        updateBannerContent($(this));
+        $slideBanners.trigger('next.owl.carousel');
     });
     $(".slide-services").owlCarousel({
         loop: true,
