@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "kienvuong",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "source"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "http-server", "/Users/mac/Desktop/AGN - Kiến Vương/.claude/worktrees/wonderful-williams/source", "-p", "8090", "--cors", "-c-1"],
       "port": 8090
     }
   ]
