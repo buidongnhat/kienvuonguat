@@ -59,6 +59,32 @@ function myfunload() {
         autoplaytimeout: 10000,
         autoplayHoverPause: true
     });
+    $('#bannerPrev').on('click', function () {
+        $('.slide-banners').trigger('prev.owl.carousel');
+    });
+    $('#bannerNext').on('click', function () {
+        $('.slide-banners').trigger('next.owl.carousel');
+    });
+
+    function updateBannerContent($owl) {
+        var $active = $owl.find('.owl-item.active .item');
+        var title = $active.data('title') || '';
+        var desc = $active.data('desc') || '';
+        var link = $active.data('link') || '#';
+        var $content = $('#bannerContent');
+        $content.removeClass('is-visible');
+        setTimeout(function () {
+            $content.find('.kv-banner-content__title').text(title);
+            $content.find('.kv-banner-content__desc').text(desc);
+            $content.find('.kv-banner-content__btn').attr('href', link);
+            $content.addClass('is-visible');
+        }, 50);
+    }
+
+    var $banners = $('.slide-banners');
+    $banners.on('initialized.owl.carousel translated.owl.carousel', function () {
+        updateBannerContent($(this));
+    });
     $(".slide-services").owlCarousel({
         loop: true,
         margin: 30,
@@ -116,7 +142,7 @@ function myfunload() {
         dots: false,
         autoplay: true,
         autoplaytimeout: 10000,
-        onInitialized: function() {
+        onInitialized: function () {
             if (window.lucide) {
                 lucide.createIcons();
             }

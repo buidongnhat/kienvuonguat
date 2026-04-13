@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "kienvuong",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8090", "--directory", "source"],
       "port": 8090
     }
