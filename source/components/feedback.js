@@ -2,6 +2,7 @@
  * Feedback Pin System
  * Press 'C' to enter feedback mode → click to place → type comment → Enter to save.
  * Pins persist via /api/feedback (backed by Excel).
+ * DISABLED — badge hidden, keyboard shortcut off.
  */
 (function () {
   'use strict';
@@ -76,17 +77,8 @@
     '}',
     '.fb-pin:hover .fb-tooltip { opacity: 1; }',
 
-    /* Activation badge (top-right) */
-    '.fb-badge {',
-    '  position: fixed; top: 16px; right: 16px; z-index: 99997;',
-    '  background: #c03428; color: #fff; border: none; border-radius: 50%;',
-    '  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;',
-    '  cursor: pointer; box-shadow: 0 2px 12px rgba(192,52,40,.35);',
-    '  transition: all .2s ease; font-size: 16px;',
-    '}',
-    '.fb-badge:hover { transform: scale(1.1); box-shadow: 0 4px 18px rgba(192,52,40,.45); }',
-    '.fb-badge.active { background: #08854a; }',
-    '.fb-badge svg { width: 18px; height: 18px; }',
+    /* Activation badge — hidden */
+    '.fb-badge { display: none !important; }',
   ].join('\n');
   document.head.appendChild(style);
 
@@ -102,7 +94,7 @@
     + '</svg>';
 
   // ──────────────────────────────────────────────
-  // Badge button (always visible)
+  // Badge button (hidden via CSS above)
   // ──────────────────────────────────────────────
   var badge = document.createElement('button');
   badge.className = 'fb-badge';
@@ -142,21 +134,19 @@
   }
 
   // ──────────────────────────────────────────────
-  // Keyboard listener
+  // Keyboard listener — DISABLED
   // ──────────────────────────────────────────────
-  document.addEventListener('keydown', function (e) {
-    // Don't trigger if user is typing in an input/textarea
-    var tag = (e.target.tagName || '').toLowerCase();
-    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
-
-    if (e.key === 'c' || e.key === 'C') {
-      e.preventDefault();
-      toggleFeedbackMode();
-    }
-    if (e.key === 'Escape' && feedbackMode) {
-      toggleFeedbackMode();
-    }
-  });
+  // document.addEventListener('keydown', function (e) {
+  //   var tag = (e.target.tagName || '').toLowerCase();
+  //   if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+  //   if (e.key === 'c' || e.key === 'C') {
+  //     e.preventDefault();
+  //     toggleFeedbackMode();
+  //   }
+  //   if (e.key === 'Escape' && feedbackMode) {
+  //     toggleFeedbackMode();
+  //   }
+  // });
 
   // ──────────────────────────────────────────────
   // Click handler (place input)
@@ -192,7 +182,7 @@
     input.setAttribute('maxlength', '500');
 
     input.addEventListener('keydown', function (ev) {
-      ev.stopPropagation(); // prevent 'C' from toggling mode
+      ev.stopPropagation();
       if (ev.key === 'Enter' && input.value.trim()) {
         saveFeedback(x, y, input.value.trim());
         removeActiveInput();
@@ -213,7 +203,7 @@
 
     // Focus after a tick so click doesn't immediately blur
     setTimeout(function () { input.focus(); }, 30);
-  }, true); // capture phase so we intercept before other handlers
+  }, true);
 
   // ──────────────────────────────────────────────
   // Save feedback to backend
@@ -228,10 +218,8 @@
       screenHeight: window.innerHeight
     };
 
-    // Immediately place the pin (optimistic UI)
     createPin(x, y, comment);
 
-    // Send to backend
     var xhr = new XMLHttpRequest();
     xhr.open('POST', API, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -254,8 +242,8 @@
   function createPin(x, y, comment) {
     var pin = document.createElement('div');
     pin.className = 'fb-pin';
-    pin.style.left = (x - 14) + 'px'; // center the 28px pin
-    pin.style.top = (y - 28) + 'px';  // pin points to the click spot
+    pin.style.left = (x - 14) + 'px';
+    pin.style.top = (y - 28) + 'px';
 
     var icon = document.createElement('div');
     icon.className = 'fb-pin-icon';
@@ -288,7 +276,6 @@
     xhr.send();
   }
 
-  // Load existing pins once DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadPins);
   } else {
