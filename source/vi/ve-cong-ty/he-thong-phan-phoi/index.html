@@ -27,301 +27,244 @@
   <link href="/css/site-respon.css" rel="stylesheet" />
   <script src="/scripts/jquery.js"></script>
   <style>
-    /* ===== PREMIUM TIMELINE ===== */
-    .kv-timeline {
-      position: relative;
-      padding: 60px 0 40px;
-    }
+    /* ===== DISTRIBUTION MAP ===== */
+    .kv-dist { margin-top: 8px; }
 
-    /* Vertical center line */
-    .kv-timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      height: 0;
-      /* JS sẽ tính toán chiều cao chính xác */
-      width: 3px;
-      background: linear-gradient(180deg, #c03428 0%, #08854a 50%, #c03428 100%);
-      transform: translateX(-50%);
-      border-radius: 3px;
-    }
-
-    /* Each timeline row */
-    .kv-tl-row {
+    /* Tabs */
+    .kv-dist__tabs {
       display: flex;
-      align-items: stretch;
-      position: relative;
-      margin-bottom: 0;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
     }
-
-    /* Left and right columns */
-    .kv-tl-left,
-    .kv-tl-right {
-      width: 50%;
-      padding: 0 40px;
-    }
-
-    /* Odd rows: year on the left, card on the right */
-    .kv-tl-row:nth-child(odd) .kv-tl-left {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .kv-tl-row:nth-child(odd) .kv-tl-right {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Odd rows: content on the right */
-    .kv-tl-row:nth-child(even) .kv-tl-left {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .kv-tl-row:nth-child(even) .kv-tl-right {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Center dot — odd = red, even = green */
-    .kv-tl-dot {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
+    .kv-dist__tab {
+      padding: 9px 20px;
+      border-radius: 6px;
+      border: 1.5px solid #e0e0e0;
       background: #fff;
-      border: 3px solid #c03428;
-      z-index: 2;
-      transition: all 0.4s cubic-bezier(.4, 0, .2, 1);
-      box-shadow: 0 0 0 5px rgba(192, 52, 40, 0.12);
+      font: 600 13px/1 'Noto Sans', sans-serif;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .kv-dist__tab:hover { border-color: #c03428; color: #c03428; }
+    .kv-dist__tab.active { background: #c03428; border-color: #c03428; color: #fff; }
+
+    /* Body layout */
+    .kv-dist__body {
+      display: grid;
+      grid-template-columns: 57fr 43fr;
+      gap: 18px;
+      align-items: start;
     }
 
-    .kv-tl-row:nth-child(even) .kv-tl-dot {
-      border-color: #08854a;
-      box-shadow: 0 0 0 5px rgba(8, 133, 74, 0.12);
-    }
-
-    .kv-tl-row:hover .kv-tl-dot {
-      transform: translate(-50%, -50%) scale(1.4);
-      background: #c03428;
-      border-color: #c03428;
-    }
-
-    .kv-tl-row:nth-child(even):hover .kv-tl-dot {
-      background: #08854a;
-      border-color: #08854a;
-    }
-
-    /* Year badge — odd = red, even = green */
-    .kv-tl-year {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 90px;
-      height: 44px;
-      border-radius: 22px;
-      font-family: 'Noto Sans', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: #fff;
-      background: linear-gradient(135deg, #c03428, #e04a3e);
-      letter-spacing: 1px;
-      box-shadow: 0 4px 16px rgba(192, 52, 40, 0.25);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .kv-tl-row:nth-child(even) .kv-tl-year {
-      background: linear-gradient(135deg, #08854a, #0da65e);
-      box-shadow: 0 4px 16px rgba(8, 133, 74, 0.25);
-    }
-
-    .kv-tl-row:hover .kv-tl-year {
-      transform: scale(1.08);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Content card */
-    .kv-tl-card {
-      background: #fff;
+    /* Map */
+    .kv-dist__map-wrap {
+      position: relative;
       border-radius: 12px;
-      padding: 28px 28px;
-      border: 1px solid #f0f0f0;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-      transition: all 0.35s cubic-bezier(.4, 0, .2, 1);
-      position: relative;
-      margin: 16px 0;
+      overflow: hidden;
+      background: #d6e8ef;
+      border: 1px solid #ebebeb;
+    }
+    .kv-dist__map-wrap::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+    .kv-dist__map-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    /* Inner scaling wrapper */
+    .kv-dist__map-inner {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      transform: scale(1.4);
+      transform-origin: center center;
+    }
+    .kv-dist__svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
 
-    .kv-tl-card::before {
+    /* SVG pin styles */
+    .kv-dpin { cursor: pointer; }
+    .kv-dpin__ring { transition: opacity 0.2s; }
+    .kv-dpin__dot { transition: r 0.15s ease; }
+    .kv-dpin:hover .kv-dpin__dot,
+    .kv-dpin.active .kv-dpin__dot { filter: brightness(1.15); }
+    .kv-dpin.active .kv-dpin__ring { animation: kv-ping 1.6s ease-in-out infinite; }
+    @keyframes kv-ping {
+      0%   { opacity: 0.45; }
+      60%  { opacity: 0.1; }
+      100% { opacity: 0.45; }
+    }
+    .kv-dist-fade { opacity: 0.25; }
+
+    /* Tooltip */
+    .kv-dtip {
+      position: absolute;
+      background: rgba(20,20,20,0.88);
+      color: #fff;
+      padding: 6px 11px;
+      border-radius: 6px;
+      font: 600 11.5px/1.3 'Noto Sans', sans-serif;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 20;
+      transform: translate(-50%, -110%);
+    }
+    .kv-dtip.show { opacity: 1; }
+    .kv-dtip::after {
       content: '';
       position: absolute;
-      top: 50%;
-      width: 16px;
-      height: 16px;
-      background: #fff;
-      border: 1px solid #f0f0f0;
-      border-right: none;
+      left: 50%; bottom: -5px;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
       border-bottom: none;
-      transform: translateY(-50%) rotate(-45deg);
+      border-top-color: rgba(20,20,20,0.88);
     }
 
-    /* Odd rows: card is on the RIGHT → arrow points LEFT */
-    .kv-tl-row:nth-child(odd) .kv-tl-card::before {
-      left: -9px;
-      transform: translateY(-50%) rotate(-45deg);
+    /* Panel */
+    .kv-dist__panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
-
-    /* Even rows: card is on the LEFT → arrow points RIGHT */
-    .kv-tl-row:nth-child(even) .kv-tl-card::before {
-      right: -9px;
-      transform: translateY(-50%) rotate(135deg);
+    .kv-dist__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-bottom: 14px;
     }
-
-    .kv-tl-card:hover {
-      border-color: #e8e8e8;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-      transform: translateY(-3px);
-    }
-
-    /* Card title — odd = red, even = green */
-    .kv-tl-card__title {
-      font-family: 'Noto Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: #c03428;
-      margin: 0 0 8px;
-      line-height: 1.5;
-    }
-
-    .kv-tl-row:nth-child(even) .kv-tl-card__title {
-      color: #08854a;
-    }
-
-    .kv-tl-card__desc {
-      font-family: 'Noto Sans', sans-serif;
-      font-size: 14px;
-      color: #888;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* Terminal dot at end */
-    .kv-tl-end {
+    .kv-dist__stat {
+      background: #fff;
+      border: 1px solid #ebebeb;
+      border-radius: 8px;
+      padding: 10px 6px;
       text-align: center;
-      position: relative;
-      z-index: 2;
-      padding-top: 8px;
     }
-
-    .kv-tl-end__dot {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c03428, #2E3486);
-      color: #fff;
-      font-size: 20px;
-      box-shadow: 0 4px 20px rgba(192, 52, 40, 0.3);
-      animation: kv-tl-pulse 2.5s ease-in-out infinite;
+    .kv-dist__stat-n {
+      display: block;
+      font: 700 18px/1 'Noto Sans', sans-serif;
+      color: #c03428;
     }
-
-    @keyframes kv-tl-pulse {
-
-      0%,
-      100% {
-        box-shadow: 0 4px 20px rgba(192, 52, 40, 0.3);
-      }
-
-      50% {
-        box-shadow: 0 4px 32px rgba(192, 52, 40, 0.5);
-      }
-    }
-
-    .kv-tl-end__label {
-      font-family: 'Noto Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
+    .kv-dist__stat-l {
+      display: block;
+      font: 400 10px/1.3 'Noto Sans', sans-serif;
       color: #999;
-      margin-top: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .kv-dist__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 460px;
+      overflow-y: auto;
+      padding-right: 3px;
+    }
+    .kv-dist__cards::-webkit-scrollbar { width: 3px; }
+    .kv-dist__cards::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 2px; }
+    .kv-dist__cards::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
+    /* Location card */
+    .kv-dloc {
+      background: #fff;
+      border: 1.5px solid #ebebeb;
+      border-radius: 10px;
+      padding: 13px 14px;
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: border-color 0.18s, box-shadow 0.18s, opacity 0.2s;
+    }
+    .kv-dloc:hover { border-color: #c8c8c8; box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+    .kv-dloc.active { border-color: #c03428 !important; box-shadow: 0 4px 18px rgba(192,52,40,0.13); }
+    .kv-dloc.fade { opacity: 0.3; pointer-events: none; }
+    .kv-dloc__dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .kv-dloc__body { flex: 1; min-width: 0; }
+    .kv-dloc__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+    .kv-dloc__name {
+      font: 600 12.5px/1.4 'Noto Sans', sans-serif;
+      color: #1a1a1a;
+    }
+    .kv-dloc__badge {
+      font: 600 9.5px/1 'Noto Sans', sans-serif;
+      padding: 3px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .kv-dloc__addr {
+      font: 400 11.5px/1.5 'Noto Sans', sans-serif;
+      color: #999;
+    }
+    .kv-dloc__phone {
+      font: 500 11.5px/1.4 'Noto Sans', sans-serif;
+      color: #c03428;
+      margin-top: 3px;
     }
 
-    /* Animate in */
-    .kv-tl-row {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(.4, 0, .2, 1);
+    /* Type colors */
+    .kv-col-hq      { background: #c03428; }
+    .kv-col-branch  { background: #e04a3e; }
+    .kv-col-rep     { background: #f59e0b; }
+    .kv-col-wh      { background: #8b9ab0; }
+    .kv-badge-hq     { background: #fdf1f0; color: #c03428; }
+    .kv-badge-branch { background: #fdf1f0; color: #c03428; }
+    .kv-badge-rep    { background: #fffbeb; color: #d97706; }
+    .kv-badge-wh     { background: #f1f5f9; color: #64748b; }
+
+    /* Legend */
+    .kv-dist__legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding: 11px 16px;
+      background: #f8f8f8;
+      border-radius: 8px;
+    }
+    .kv-dist__leg {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font: 500 11.5px/1 'Noto Sans', sans-serif;
+      color: #666;
+    }
+    .kv-dist__leg-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    .kv-tl-row.kv-tl-visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Responsive */
+    @media (max-width: 991px) {
+      .kv-dist__body { grid-template-columns: 1fr; }
+      .kv-dist__cards { max-height: 300px; }
     }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .kv-timeline::before {
-        left: 24px;
-      }
-
-      .kv-tl-row {
-        flex-direction: column;
-        padding-left: 56px;
-      }
-
-      .kv-tl-left,
-      .kv-tl-right {
-        width: 100%;
-        padding: 0;
-        text-align: left !important;
-        justify-content: flex-start !important;
-      }
-
-      .kv-tl-dot {
-        left: 24px !important;
-        top: 24px;
-        transform: translate(-50%, 0) !important;
-      }
-
-      .kv-tl-row:hover .kv-tl-dot {
-        transform: translate(-50%, 0) scale(1.4) !important;
-      }
-
-      .kv-tl-row:nth-child(odd) .kv-tl-left {
-        order: 1;
-      }
-
-      .kv-tl-row:nth-child(odd) .kv-tl-right {
-        order: 2;
-      }
-
-      .kv-tl-card::before {
-        display: none;
-      }
-
-      .kv-tl-year {
-        height: 36px;
-        min-width: 76px;
-        font-size: 16px;
-      }
-
-      .kv-tl-card {
-        padding: 20px;
-      }
-
-      .kv-tl-end {
-        padding-left: 0;
-        margin-left: 24px;
-      }
+    @media (max-width: 576px) {
+      .kv-dist__tab { padding: 8px 14px; font-size: 12px; }
+      .kv-dist__stats { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -430,18 +373,59 @@
               <time>Mạng lưới phân phối trải rộng khắp toàn quốc với các chi nhánh tại TP.HCM, Hà Nội và các khu vực trọng điểm — đảm bảo cung ứng nhanh chóng, hiệu quả đến tận tay khách hàng.</time>
             </div>
 
-            <div class="art-content__body" style="text-align: center;">
-              <style>
-                .art-content__body img {
-                  max-width: 100%;
-                  height: auto;
-                  border-radius: 8px;
-                  box-shadow: none;
-                  margin-top: 20px;
-                }
-              </style>
-              <img alt="Hệ thống phân phối" class="image-responsive" src="/images/htpt.png" />
+            <div class="art-content__body">
+              <div class="kv-dist">
+                <!-- Filter tabs -->
+                <div class="kv-dist__tabs">
+                  <button class="kv-dist__tab active" data-region="all">Tất Cả</button>
+                  <button class="kv-dist__tab" data-region="north">Miền Bắc</button>
+                  <button class="kv-dist__tab" data-region="central">Miền Trung</button>
+                  <button class="kv-dist__tab" data-region="south">Miền Nam</button>
+                </div>
 
+                <!-- Map + Panel -->
+                <div class="kv-dist__body">
+                  <!-- Map -->
+                  <div class="kv-dist__map-wrap">
+                    <div class="kv-dist__map-inner">
+                      <img src="/images/vn.svg" alt="Bản đồ phân phối Kiến Vương" class="kv-dist__map-img" />
+                      <svg id="kvDistSvg" class="kv-dist__svg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+                    <div class="kv-dtip" id="kvDistTip"></div>
+                  </div>
+
+                  <!-- Panel -->
+                  <div class="kv-dist__panel">
+                    <div class="kv-dist__stats">
+                      <div class="kv-dist__stat">
+                        <span class="kv-dist__stat-n">1</span>
+                        <span class="kv-dist__stat-l">Trụ sở</span>
+                      </div>
+                      <div class="kv-dist__stat">
+                        <span class="kv-dist__stat-n">1</span>
+                        <span class="kv-dist__stat-l">Chi nhánh</span>
+                      </div>
+                      <div class="kv-dist__stat">
+                        <span class="kv-dist__stat-n">3</span>
+                        <span class="kv-dist__stat-l">VPĐD</span>
+                      </div>
+                      <div class="kv-dist__stat">
+                        <span class="kv-dist__stat-n">6</span>
+                        <span class="kv-dist__stat-l">Kho</span>
+                      </div>
+                    </div>
+                    <div class="kv-dist__cards" id="kvDistCards"></div>
+                  </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="kv-dist__legend">
+                  <div class="kv-dist__leg"><span class="kv-dist__leg-dot kv-col-hq"></span>Trụ sở</div>
+                  <div class="kv-dist__leg"><span class="kv-dist__leg-dot kv-col-branch"></span>Chi nhánh</div>
+                  <div class="kv-dist__leg"><span class="kv-dist__leg-dot kv-col-rep"></span>Văn phòng đại diện</div>
+                  <div class="kv-dist__leg"><span class="kv-dist__leg-dot kv-col-wh"></span>Kho</div>
+                </div>
+              </div>
             </div>
           </article>
         </div>
@@ -529,35 +513,223 @@
       <script src="/components/industries-section-v1.js"></script>
       <script src="/components/footer.js"></script>
 
-      <!-- Timeline scroll animation -->
+      <!-- Distribution Map -->
       <script>
-        $(document).ready(function () {
-          // Tính chiều cao đường kẻ dọc: dừng đúng tâm kv-tl-end__dot
-          var $timeline = $('.kv-timeline');
-          var $endDot = $('.kv-tl-end__dot');
-          if ($timeline.length && $endDot.length) {
-            var lineHeight = $endDot.offset().top - $timeline.offset().top + ($endDot.outerHeight() / 2);
-            $timeline[0].style.setProperty('--tl-line-height', lineHeight + 'px');
-            document.querySelector('.kv-timeline').style.setProperty('--tl-line-height', lineHeight + 'px');
-            // Set via pseudo-element workaround
-            var styleEl = document.createElement('style');
-            styleEl.textContent = '.kv-timeline::before { height: ' + lineHeight + 'px !important; }';
-            document.head.appendChild(styleEl);
+      (function () {
+        var LOCS = [
+          // Miền Bắc
+          { id:'hanoi-branch', name:'Chi nhánh Hà Nội',      type:'branch',  region:'north',
+            addr:'E15 – Khu nhà ở Pandora, 53 Triều Khúc, P. Thanh Xuân Nam, Q. Thanh Xuân, Hà Nội',
+            phone:'(+84) 24 3784 2024', x:495, y:200 },
+          { id:'hung-yen',     name:'Kho Hưng Yên',           type:'wh',      region:'north',
+            addr:'Hưng Yên', x:513, y:220 },
+          { id:'bac-ninh',     name:'Kho Bắc Ninh',           type:'wh',      region:'north',
+            addr:'Lô C2-2, Đường N2, KCN Đại Đồng Hoàn Sơn, H. Tiên Du, T. Bắc Ninh',
+            phone:'(+84) 222 384 8131', x:519, y:190 },
+          // Miền Trung
+          { id:'danang-rep',   name:'VPĐD Đà Nẵng',           type:'rep',     region:'central',
+            addr:'10 Nguyên Phúc, P. Thọ Quang, Q. Sơn Trà, Đà Nẵng',
+            phone:'(+84) 236 395 5784', x:635, y:503 },
+          { id:'danang-wh',    name:'Kho Đà Nẵng',            type:'wh',      region:'central',
+            addr:'Đà Nẵng', x:627, y:517 },
+          { id:'nhatrang-rep', name:'VPĐD Nha Trang',         type:'rep',     region:'central',
+            addr:'Phòng 5 – Tầng 2, Tòa nhà VCN Building, KĐT Vĩnh Điểm Trung, TP. Nha Trang, T. Khánh Hòa',
+            phone:'(+84) 258 3871 145/6', x:686, y:732 },
+          // Miền Nam
+          { id:'hcm-hq',       name:'Trụ sở TP. Hồ Chí Minh', type:'hq',     region:'south',
+            addr:'Lô 22, Đường 7, KCN Tân Tạo, P. Tân Tạo A, Q. Bình Tân, TP. Hồ Chí Minh',
+            phone:'(+84) 28 3754 3624', email:'info@kienvuong.com', x:549, y:821 },
+          { id:'hcm-wh',       name:'Kho TP. Hồ Chí Minh',   type:'wh',      region:'south',
+            addr:'TP. Hồ Chí Minh', x:562, y:834 },
+          { id:'longan-wh',    name:'Kho Long An',             type:'wh',      region:'south',
+            addr:'Long An', x:532, y:823 },
+          { id:'cantho-rep',   name:'VPĐD Cần Thơ',           type:'rep',     region:'south',
+            addr:'Lô A3, 20-21 Dự án Khu nhà ở Nam Khang, P. Hưng Thạnh, Q. Cái Răng, TP. Cần Thơ',
+            phone:'(+84) 292 3836 456', x:488, y:855 },
+          { id:'vinhlong-wh',  name:'Kho Vĩnh Long',          type:'wh',      region:'south',
+            addr:'Vĩnh Long', x:513, y:865 }
+        ];
+
+        var COLORS = { hq:'#c03428', branch:'#e04a3e', rep:'#f59e0b', wh:'#8b9ab0' };
+        var RADII  = { hq:10, branch:8, rep:7, wh:5 };
+        var LABELS = { hq:'Trụ sở', branch:'Chi nhánh', rep:'VPĐD', wh:'Kho' };
+
+        var svg   = document.getElementById('kvDistSvg');
+        var tip   = document.getElementById('kvDistTip');
+        var cards = document.getElementById('kvDistCards');
+        var activeId = null;
+        var activeRegion = 'all';
+
+        // ── Build SVG pins ──────────────────────────────
+        var NS = 'http://www.w3.org/2000/svg';
+        LOCS.forEach(function (loc) {
+          var g = document.createElementNS(NS, 'g');
+          g.setAttribute('class', 'kv-dpin');
+          g.setAttribute('data-id', loc.id);
+          g.setAttribute('data-region', loc.region);
+          g.setAttribute('transform', 'translate(' + loc.x + ',' + loc.y + ')');
+
+          var r     = RADII[loc.type];
+          var color = COLORS[loc.type];
+
+          var ring = document.createElementNS(NS, 'circle');
+          ring.setAttribute('class', 'kv-dpin__ring');
+          ring.setAttribute('r', r + 7);
+          ring.setAttribute('fill', 'none');
+          ring.setAttribute('stroke', color);
+          ring.setAttribute('stroke-width', '2');
+          ring.setAttribute('opacity', '0.35');
+
+          var dot = document.createElementNS(NS, 'circle');
+          dot.setAttribute('class', 'kv-dpin__dot');
+          dot.setAttribute('r', r);
+          dot.setAttribute('fill', color);
+          dot.setAttribute('stroke', '#fff');
+          dot.setAttribute('stroke-width', '1.5');
+
+          g.appendChild(ring);
+          g.appendChild(dot);
+
+          // HQ: add star
+          if (loc.type === 'hq') {
+            var star = document.createElementNS(NS, 'text');
+            star.textContent = '★';
+            star.setAttribute('text-anchor', 'middle');
+            star.setAttribute('dominant-baseline', 'central');
+            star.setAttribute('fill', '#fff');
+            star.setAttribute('font-size', '9');
+            star.setAttribute('pointer-events', 'none');
+            g.appendChild(star);
           }
 
-          // Intersection Observer for scroll-in animation
-          var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('kv-tl-visible');
+          svg.appendChild(g);
+        });
+
+        // ── Build cards ─────────────────────────────────
+        function buildCards(region) {
+          cards.innerHTML = '';
+          LOCS.forEach(function (loc) {
+            if (region !== 'all' && loc.region !== region) return;
+            var card = document.createElement('div');
+            card.className = 'kv-dloc';
+            card.setAttribute('data-id', loc.id);
+            card.setAttribute('data-region', loc.region);
+
+            var color = COLORS[loc.type];
+            var phoneHtml = loc.phone
+              ? '<div class="kv-dloc__phone">' + loc.phone + '</div>' : '';
+            var emailHtml = loc.email
+              ? '<div class="kv-dloc__phone" style="color:#555">' + loc.email + '</div>' : '';
+
+            card.innerHTML =
+              '<div class="kv-dloc__dot kv-col-' + loc.type + '"></div>' +
+              '<div class="kv-dloc__body">' +
+                '<div class="kv-dloc__head">' +
+                  '<span class="kv-dloc__name">' + loc.name + '</span>' +
+                  '<span class="kv-dloc__badge kv-badge-' + loc.type + '">' + LABELS[loc.type] + '</span>' +
+                '</div>' +
+                '<div class="kv-dloc__addr">' + loc.addr + '</div>' +
+                phoneHtml + emailHtml +
+              '</div>';
+
+            card.addEventListener('click', function () { selectLoc(loc.id); });
+            cards.appendChild(card);
+          });
+        }
+
+        // ── Select location ─────────────────────────────
+        function selectLoc(id) {
+          activeId = id;
+
+          // Update pins
+          document.querySelectorAll('.kv-dpin').forEach(function (p) {
+            p.classList.remove('active', 'kv-dist-fade');
+            if (p.getAttribute('data-id') === id) p.classList.add('active');
+            else p.classList.add('kv-dist-fade');
+          });
+
+          // Update cards
+          document.querySelectorAll('.kv-dloc').forEach(function (c) {
+            c.classList.remove('active');
+            if (c.getAttribute('data-id') === id) {
+              c.classList.add('active');
+              c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          });
+        }
+
+        function clearSelection() {
+          activeId = null;
+          document.querySelectorAll('.kv-dpin').forEach(function (p) {
+            p.classList.remove('active', 'kv-dist-fade');
+          });
+          document.querySelectorAll('.kv-dloc').forEach(function (c) {
+            c.classList.remove('active');
+          });
+        }
+
+        // ── Pin events ──────────────────────────────────
+        svg.addEventListener('mouseover', function (e) {
+          var pin = e.target.closest('.kv-dpin');
+          if (!pin) return;
+          var id  = pin.getAttribute('data-id');
+          var loc = LOCS.find(function (l) { return l.id === id; });
+          if (!loc) return;
+
+          // Position tooltip relative to map wrapper (accounts for scale transform)
+          var svgRect  = svg.getBoundingClientRect();
+          var wrapRect = svg.closest('.kv-dist__map-wrap').getBoundingClientRect();
+          var scaleX   = svgRect.width / 1000;
+          var scaleY   = svgRect.height / 1000;
+          var tx = (svgRect.left - wrapRect.left) + loc.x * scaleX;
+          var ty = (svgRect.top  - wrapRect.top)  + loc.y * scaleY;
+
+          tip.textContent = loc.name;
+          tip.style.left = tx + 'px';
+          tip.style.top  = ty + 'px';
+          tip.classList.add('show');
+        });
+
+        svg.addEventListener('mouseout', function (e) {
+          if (!e.target.closest('.kv-dpin')) tip.classList.remove('show');
+        });
+
+        svg.addEventListener('click', function (e) {
+          var pin = e.target.closest('.kv-dpin');
+          if (!pin) { clearSelection(); return; }
+          var id = pin.getAttribute('data-id');
+          if (activeId === id) { clearSelection(); return; }
+          selectLoc(id);
+        });
+
+        // ── Tab filter ──────────────────────────────────
+        document.querySelectorAll('.kv-dist__tab').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            document.querySelectorAll('.kv-dist__tab').forEach(function (b) {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            activeRegion = btn.getAttribute('data-region');
+            clearSelection();
+            buildCards(activeRegion);
+
+            // Fade irrelevant pins
+            document.querySelectorAll('.kv-dpin').forEach(function (p) {
+              if (activeRegion === 'all') {
+                p.classList.remove('kv-dist-fade');
+              } else {
+                if (p.getAttribute('data-region') !== activeRegion)
+                  p.classList.add('kv-dist-fade');
+                else
+                  p.classList.remove('kv-dist-fade');
               }
             });
-          }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
-          document.querySelectorAll('.kv-tl-row').forEach(function (row) {
-            observer.observe(row);
           });
         });
+
+        // ── Init ────────────────────────────────────────
+        buildCards('all');
+      })();
       </script>
     </div>
   </div>
