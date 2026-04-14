@@ -22,13 +22,11 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(
-        to top,
-        rgba(45, 12, 10, 0.82) 0%,
-        rgba(60, 18, 15, 0.50) 35%,
-        rgba(80, 22, 18, 0.18) 70%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(45, 12, 10, 0.82) 0%,
+            rgba(60, 18, 15, 0.50) 25%,
+            rgba(80, 22, 18, 0.18) 70%,
+            transparent 100%);
 }
 
 .nph-hero__content {
@@ -46,23 +44,23 @@
 }
 
 .nph-hero__breadcrumb a {
-    color: rgba(255,255,255,.55);
+    color: rgba(255, 255, 255, .55);
     text-decoration: none;
     transition: color .2s;
 }
 
 .nph-hero__breadcrumb a:hover {
-    color: rgba(255,255,255,.85);
+    color: rgba(255, 255, 255, .85);
 }
 
 .nph-hero__breadcrumb i {
-    color: rgba(255,255,255,.35);
+    color: rgba(255, 255, 255, .35);
     margin: 0 6px;
     font-size: 11px;
 }
 
 .nph-hero__breadcrumb span {
-    color: rgba(255,255,255,.75);
+    color: rgba(255, 255, 255, .75);
 }
 
 /* Title */
@@ -75,17 +73,17 @@
     letter-spacing: 1.5px;
     margin: 0 0 10px;
     line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0,0,0,.4);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .4);
 }
 
 .nph-hero__subtitle {
     font-size: 15px;
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, .8);
     margin: 0 0 28px;
     max-width: 600px;
     min-width: 0;
     line-height: 1.6;
-    text-shadow: 0 1px 4px rgba(0,0,0,.3);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .3);
     word-break: keep-all;
     overflow-wrap: break-word;
 }
@@ -103,9 +101,9 @@
     font-weight: 600;
     padding: 8px 22px;
     border-radius: 30px;
-    border: 1.5px solid rgba(255,255,255,.25);
-    background: rgba(255,255,255,.08);
-    color: rgba(255,255,255,.75);
+    border: 1.5px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .75);
     cursor: pointer;
     transition: all .2s ease;
     letter-spacing: 0.3px;
@@ -113,8 +111,8 @@
 }
 
 .nph-chip:hover {
-    border-color: rgba(255,255,255,.5);
-    background: rgba(255,255,255,.15);
+    border-color: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .15);
     color: #fff;
 }
 
@@ -122,7 +120,7 @@
     background: #c03428;
     border-color: #c03428;
     color: #fff;
-    box-shadow: 0 2px 12px rgba(192,52,40,.35);
+    box-shadow: 0 2px 12px rgba(192, 52, 40, .35);
 }
 
 .nph-chip--active:hover {
@@ -178,7 +176,7 @@
 
 .nph-search input:focus {
     border-color: #c03428;
-    box-shadow: 0 0 0 3px rgba(192,52,40,.08);
+    box-shadow: 0 0 0 3px rgba(192, 52, 40, .08);
 }
 
 /* Sort */
@@ -233,6 +231,7 @@
     .nph-hero {
         min-height: 280px;
     }
+
     .nph-hero__title {
         font-size: 32px;
     }
@@ -242,28 +241,35 @@
     .nph-hero {
         min-height: 240px;
     }
+
     .nph-hero__title {
         font-size: 26px;
         letter-spacing: 0.5px;
     }
+
     .nph-hero__subtitle {
         font-size: 13px;
         margin-bottom: 20px;
     }
+
     .nph-hero__content {
         padding: 36px 0 28px;
     }
+
     .nph-chip {
         padding: 7px 16px;
         font-size: 12px;
     }
+
     .nph-toolbar {
         flex-direction: column;
         align-items: stretch;
     }
+
     .nph-search {
         max-width: 100%;
     }
+
     .nph-sort {
         justify-content: flex-end;
     }
