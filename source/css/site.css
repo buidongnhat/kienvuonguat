@@ -3322,7 +3322,7 @@ ul.ul-job ul li.active a:after {
     padding: 48px 0 52px;
 }
 
-.kv-cv-block + .kv-cv-block {
+.kv-cv-block+.kv-cv-block {
     border-top: 1px solid #e8e8e8;
 }
 
@@ -3474,6 +3474,7 @@ ul.ul-job ul li.active a:after {
     .kv-cv-cards--4 {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .kv-cv-cards--5 {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -3485,14 +3486,15 @@ ul.ul-job ul li.active a:after {
         align-items: flex-start;
         gap: 20px;
     }
+
     .kv-cv-cards--4,
     .kv-cv-cards--5 {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .kv-cv-emblem {
         width: 80px;
         height: 80px;
         font-size: 15px;
     }
-}
 }
