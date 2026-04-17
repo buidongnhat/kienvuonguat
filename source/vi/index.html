@@ -178,6 +178,13 @@
           </div>
         </div>
       </div>
+      <div id="kv-search-panel" class="kv-search-panel">
+        <div class="container">
+          <form action="/vi/tim-kiem/" method="get" class="kv-search-panel__form">
+            <input type="text" name="keyword" id="searchInput" class="kv-search-panel__input" placeholder="Tìm kiếm..." autocomplete="off" />
+          </form>
+        </div>
+      </div>
       <div id="main-content" style="padding-bottom: 0px;">
         <div class="kv-banner-wrap">
           <div class="slide-banners owl-carousel">
@@ -691,6 +698,22 @@
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           lucide.createIcons();
+        });
+      </script>
+      <script>
+        $(function () {
+          $('#searchToggle').on('click', function () {
+            var $panel = $('#kv-search-panel');
+            var $btn = $(this);
+            if ($panel.hasClass('is-open')) {
+              $panel.removeClass('is-open');
+              $btn.removeClass('is-active');
+            } else {
+              $panel.addClass('is-open');
+              $btn.addClass('is-active');
+              setTimeout(function () { $('#searchInput').focus(); }, 50);
+            }
+          });
         });
       </script>
     </div>
