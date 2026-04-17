@@ -3100,106 +3100,32 @@ ul.ul-job ul li.active a:after {
     display: block;
 }
 
-.kv-contact-bg__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(10, 20, 40, 0.82) 0%,
-        rgba(10, 20, 40, 0.55) 45%,
-        rgba(10, 20, 40, 0.1) 100%
-    );
-    z-index: 1;
-}
-
 .kv-contact {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     height: 100%;
-    width: 100%;
+    width: 50%;
+    margin-left: auto;
     display: flex;
     align-items: center;
-    padding: 48px 5%;
-    gap: 48px;
-}
-
-/* Left: Info panel */
-.kv-contact__info {
-    flex: 0 0 340px;
-    color: #fff;
-    padding-right: 24px;
-}
-
-.kv-contact__info-logo {
-    margin-bottom: 28px;
-}
-
-.kv-contact__info-logo img {
-    height: 48px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.9;
-}
-
-.kv-contact__info-title {
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.3;
-    margin: 0 0 32px;
-}
-
-.kv-contact__info-title span {
-    color: #e8574b;
-}
-
-.kv-contact__info-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.kv-contact__info-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.55;
-}
-
-.kv-contact__info-list li i {
-    font-size: 15px;
-    color: #e8574b;
-    width: 18px;
-    flex-shrink: 0;
-    margin-top: 2px;
+    padding: 36px 10% 36px 36px;
 }
 
 /* Right: Form */
 .kv-contact__form-wrap {
-    flex: 1;
-    min-width: 0;
     background: #fff;
-    padding: 48px 40px;
-    border-radius: 20px;
+    padding: 72px 36px;
+    border-radius: 16px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.28), 0 4px 16px rgba(0,0,0,0.12);
     border-top: 4px solid #c03428;
-    max-width: 600px;
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .kv-contact__form-header {
-    margin-bottom: 28px;
+    margin-bottom: 52px;
 }
 
 .kv-contact__title {
@@ -3348,7 +3274,7 @@ ul.ul-job ul li.active a:after {
 @media (max-width: 991px) {
     .kv-contact-bg {
         height: auto;
-        min-height: 100vh;
+        min-height: calc(100vh - 70px);
     }
 
     .kv-contact-bg__img {
@@ -3356,24 +3282,13 @@ ul.ul-job ul li.active a:after {
     }
 
     .kv-contact {
-        flex-direction: column;
-        align-items: flex-start;
         justify-content: center;
-        padding: 48px 20px;
-        gap: 32px;
-    }
-
-    .kv-contact__info {
-        flex: none;
-        width: 100%;
-        padding-right: 0;
+        padding: 60px 16px;
     }
 
     .kv-contact__form-wrap {
         padding: 36px 24px 32px;
         max-width: 100%;
-        max-height: none;
-        border-top-width: 4px;
     }
 }
 
