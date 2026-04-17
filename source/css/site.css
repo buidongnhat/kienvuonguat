@@ -146,7 +146,7 @@ a:focus {
     left: 0;
     right: 0;
     height: 65%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.25) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -190,7 +190,7 @@ a:focus {
 
 .kv-banner-content {
     position: absolute;
-    bottom: 200px;
+    bottom: 20%;
     left: 0;
     right: 0;
     z-index: 10;
@@ -219,11 +219,12 @@ a:focus {
 
 .kv-banner-content__title {
     color: #fff;
-    font-size: 46px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 14px;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
 }
 
 .kv-banner-content__desc {
