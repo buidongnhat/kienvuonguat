@@ -3505,8 +3505,10 @@ ul.ul-job ul li.active a:after {
     background: #fff;
     border-bottom: 1px solid #f0f0f0;
     padding: 14px 0;
-    position: sticky;
+    position: fixed;
     top: 70px;
+    left: 0;
+    right: 0;
     z-index: 199;
 }
 
@@ -3544,6 +3546,6 @@ ul.ul-job ul li.active a:after {
     border-bottom-color: transparent;
 }
 
-#header.search-open + #kv-search-panel {
+#kv-search-panel.is-open {
     box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
