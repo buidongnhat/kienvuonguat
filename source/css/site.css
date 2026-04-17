@@ -377,6 +377,14 @@ a:focus {
     color: #ccc;
 }
 
+.lang-disabled {
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 4px;
+    cursor: default;
+}
+
 /* Search icon */
 .search-icon-btn {
     display: flex;
