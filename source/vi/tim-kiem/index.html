@@ -126,12 +126,6 @@
 </div>
 </div>
 </div>
-<div id="kv-search-panel" class="kv-search-panel">
-  <div class="container">
-    <form action="/vi/tim-kiem/" method="get" class="kv-search-panel__form">
-      <input type="text" name="keyword" id="searchInput" class="kv-search-panel__input" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off" />
-    </form>
-  </div>
 </div>
 
 <!-- Page Hero with Search Box -->
@@ -217,27 +211,12 @@
 <script src="/scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
 <script src="/scripts/jquery.main.js"></script>
 <script src="/scripts/mega-menu.js"></script>
+<script src="/components/navbar-search.js"></script>
 <script src="/components/industries-section-v1.js"></script>
 <script src="/components/footer.js"></script>
 <script src="/components/articles-db.js"></script>
 <script>
 $(function () {
-  // Navbar search panel toggle
-  $('#searchToggle').on('click', function () {
-    var $panel = $('#kv-search-panel');
-    var $btn = $(this);
-    if ($panel.hasClass('is-open')) {
-      $panel.removeClass('is-open');
-      $btn.removeClass('is-active');
-      $('#header').removeClass('search-open');
-    } else {
-      $panel.addClass('is-open');
-      $btn.addClass('is-active');
-      $('#header').addClass('search-open');
-      setTimeout(function () { $('#searchInput').focus(); }, 50);
-    }
-  });
-
   // Read keyword from URL
   var urlParams = new URLSearchParams(window.location.search);
   var keyword = urlParams.get('keyword') || '';
