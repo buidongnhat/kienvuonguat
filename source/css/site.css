@@ -3538,5 +3538,12 @@ ul.ul-job ul li.active a:after {
 
 #header.search-open {
     box-shadow: none;
-    border-bottom: 1px solid #f0f0f0;
+}
+
+#header.search-open .top-head {
+    border-bottom-color: transparent;
+}
+
+#header.search-open + #kv-search-panel {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
