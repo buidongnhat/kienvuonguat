@@ -2270,12 +2270,12 @@ ul.ul-job ul li.active a:after {
 
 /*========================menu mobile (*style css toggle menu(nút nhấp hiện menu)*) ==========================*/
 .menu-mo {
-    color: #000;
-    display: block;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 15px;
     text-transform: uppercase;
-    margin-left: 12px;
-    line-height: 40px;
 }
 
 .menu-mo span {
@@ -2295,30 +2295,41 @@ ul.ul-job ul li.active a:after {
 
 /*========= (*style menu mobile*) ==========*/
 .mobile-panel {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.52);
+    position: fixed;
     top: 0;
     left: 0;
-    position: absolute;
-    height: 100%;
-    width: 240px;
-    /*z-index: 9999;*/
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
     opacity: 0;
-    filter: alpha(opacity=0);
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+    isolation: isolate;
+}
+
+.mobile-panel.open-in .menu-in {
+    transform: translateX(0);
 }
 
 .mobile-panel.open-in {
+    opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transition: opacity 0.3s ease, visibility 0s;
 }
 
 .mobile-panel .menu-in {
-    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: min(80vw, 360px);
     height: 100%;
-    position: relative;
-    width: 100%;
-    z-index: 1;
+    background-color: #c03428;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
 }
 
 .mask-panel,
@@ -2327,17 +2338,16 @@ ul.ul-job ul li.active a:after {
 
 /* mask khi click ra ngoài menu thì đóng menu */
     {
-    background-color: #fff;
+    background-color: transparent;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: min(80vw, 360px);
     top: 0;
     position: fixed;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    height: 100%;
-    width: 100%;
-    z-index: 9998;
+    height: 100vh;
+    width: auto;
+    z-index: 0;
+    animation: none;
 }
 
 .mobile-panel p {
@@ -2399,17 +2409,7 @@ ul.ul-job ul li.active a:after {
 }
 
 .panel-reveal .mobile-panel {
-    -ms-transform: none;
-    /* IE 9 */
-    -webkit-transform: none;
-    /* Chrome, Safari, Opera */
-    transform: none;
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    /*IE8+*/
-    filter: alpha(opacity=0);
-    /* IE7 and lower */
-    z-index: -1;
+    z-index: 10000;
 }
 
 .panel-reveal .mobilep-left {
@@ -2433,7 +2433,7 @@ ul.ul-job ul li.active a:after {
 
 /*================== translate3d đẩy menu ra ========================*/
 .panel-reveal .open-in {
-    z-index: 1;
+    z-index: 10000;
 }
 
 .panel-reveal .mobilep-right {
@@ -2450,28 +2450,20 @@ ul.ul-job ul li.active a:after {
 }
 
 .mobile-active-left #wrapper-in {
-    -ms-transform: translate3d(240px, 0px, 0px);
-    /* IE 9 */
-    -webkit-transform: translate3d(240px, 0px, 0px);
-    /* Chrome, Safari, Opera */
-    transform: translate3d(240px, 0px, 0px);
+    transform: none;
 }
 
 .mobile-active-left .mask-panel {
-    left: 240px;
+    left: 0;
 }
 
 .mobile-active-right #wrapper-in {
-    -ms-transform: translate3d(-240px, 0px, 0px);
-    /* IE 9 */
-    -webkit-transform: translate3d(-240px, 0px, 0px);
-    /* Chrome, Safari, Opera */
-    transform: translate3d(-240px, 0px, 0px);
+    transform: none;
 }
 
 .mobile-active-right .mask-panel {
-    left: auto;
-    right: 240px;
+    left: 0;
+    right: 0;
 }
 
 /*====================================*/
@@ -3129,7 +3121,7 @@ ul.ul-job ul li.active a:after {
     flex-direction: column;
     justify-content: center;
     border-top: 4px solid #c03428;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.13), 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .kv-contact__form-header {
@@ -3505,6 +3497,7 @@ ul.ul-job ul li.active a:after {
         font-size: 15px;
     }
 }
+
 /* ===== Search Panel ===== */
 .kv-search-panel {
     display: none;
@@ -3553,5 +3546,180 @@ ul.ul-job ul li.active a:after {
 }
 
 #kv-search-panel.is-open {
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes maskFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile menu language list */
+.mobile-lang-list {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    align-self: center;
+    color: #fff;
+}
+
+.mobile-lang-list a,
+.mobile-lang-list .lang-sep,
+.mobile-lang-list .lang-disabled {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.mobile-lang-list .lang-active {
+    color: #fff;
+    font-weight: 700;
+}
+
+.mobile-lang-list .lang-sep {
+    margin: 0 6px;
+}
+
+/* ===== Multi-level Mobile Menu ===== */
+.mobile-panel .menu-in {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header bar */
+.mm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 56px;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mm-back {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.9;
+}
+
+.mm-back:hover {
+    opacity: 1;
+}
+
+.mm-close {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+}
+
+.mm-close:hover {
+    opacity: 1;
+}
+
+/* Panel container */
+.mm-panels {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Individual panels */
+.mm-panel {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+}
+
+.mm-panel.active {
+    transform: translateX(0);
+}
+
+.mm-panel.mm-prev {
+    transform: translateX(-100%);
+}
+
+/* Menu list items */
+.mm-list {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.mm-list li a,
+.mm-list li.mm-has-sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.15s, color 0.15s;
+}
+
+.mm-list li a:hover,
+.mm-list li.mm-has-sub:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.mm-list li.mm-has-sub span {
+    flex: 1;
+}
+
+.mm-list li:last-child a,
+.mm-list li:last-child.mm-has-sub {
+    border-bottom: none;
+}
+
+/* Language at bottom */
+.mobile-lang-list {
+    flex-shrink: 0;
+    padding: 20px 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.mobile-lang-list .lang-active {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.mobile-lang-list .lang-sep {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 8px;
+    font-size: 14px;
+}
+
+.mobile-lang-list .lang-disabled {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 14px;
 }

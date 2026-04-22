@@ -144,3 +144,49 @@
 @media screen and (max-width: 400px) {
 
 }
+
+/* Mobile navbar: search + burger grouped right, vertically centered */
+@media (max-width: 992px) {
+    .right-head.desktop-992 {
+        display: flex !important;
+        align-items: center;
+        margin-left: auto;
+    }
+    .right-head.desktop-992 .language-list {
+        display: none !important;
+    }
+    .menu-mo.ipadmo-992 {
+        display: flex !important;
+        align-items: center;
+        margin-left: 24px;
+    }
+    .top-head .container {
+        align-items: center;
+    }
+}
+
+/* Hide burger when mobile menu is open */
+@media (max-width: 992px) {
+    .menu-mo.open {
+        visibility: hidden;
+    }
+}
+
+/* Wrap banner title on mobile */
+@media (max-width: 992px) {
+    .kv-banner-content__title {
+        white-space: normal;
+        font-size: 32px;
+    }
+}
+
+/* Article prev/next nav: stack at narrow width */
+@media (max-width: 630px) {
+    .kv-article-nav-wrap__inner {
+        grid-template-columns: 1fr;
+    }
+    .kv-article-nav__placeholder {
+        display: none;
+    }
+
+}
