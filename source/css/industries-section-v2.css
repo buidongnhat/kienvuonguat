@@ -130,6 +130,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    cursor: grab;
 }
 
 .kv-ind-v2__track {
