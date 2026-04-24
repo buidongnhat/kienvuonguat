@@ -114,23 +114,22 @@
 /* ===================================================================
    MARQUEE / DRAGGABLE TRACK
    =================================================================== */
+.kv-ind-v2__carousel {
+    position: relative;
+}
+
+.kv-ind-v2__carousel #ind-prev {
+    left: 24px;
+}
+
+.kv-ind-v2__carousel #ind-next {
+    right: 24px;
+}
+
 .kv-ind-v2__marquee {
     position: relative;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    cursor: grab;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.kv-ind-v2__marquee::-webkit-scrollbar {
-    display: none;
-}
-
-.kv-ind-v2__marquee.active {
-    cursor: grabbing;
+    overflow: hidden;
 }
 
 .kv-ind-v2__track {
