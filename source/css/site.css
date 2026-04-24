@@ -2686,6 +2686,32 @@ ul.ul-job ul li.active a:after {
     pointer-events: none;
 }
 
+/* Breadcrumb — inside hero banner */
+.art-hero__breadcrumb {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.art-hero__breadcrumb .art-breadcrumb {
+    margin-bottom: 0;
+}
+
+.art-hero__breadcrumb .art-breadcrumb a,
+.art-hero__breadcrumb .art-breadcrumb span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.art-hero__breadcrumb .art-breadcrumb a:hover {
+    color: #fff;
+}
+
+.art-hero__breadcrumb .art-breadcrumb svg {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 /* Breadcrumb — inside content card */
 .art-breadcrumb {
     display: flex;

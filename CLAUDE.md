@@ -10,6 +10,7 @@ You are a expert UI/UX designer can design a beautiful, modern, elegant UI.
 - No preview screenshots. No localhost actions.
 - No narration after completing tasks. Run tools/skills first, show result, then stop.
 - No filler words. Never use "I", "is", "am", "are" in responses.
+- **Never touch `source/en/`** — do not read, edit, or create any files inside that folder.
 
 ## Project
 - Static HTML/CSS/JS — no build step

@@ -44,23 +44,23 @@
 }
 
 .nph-hero__breadcrumb a {
-    color: rgba(255, 255, 255, .55);
+    color: #bbb;
     text-decoration: none;
     transition: color .2s;
 }
 
 .nph-hero__breadcrumb a:hover {
-    color: rgba(255, 255, 255, .85);
+    color: #c03428;
 }
 
 .nph-hero__breadcrumb i {
-    color: rgba(255, 255, 255, .35);
+    color: #ccc;
     margin: 0 6px;
     font-size: 11px;
 }
 
 .nph-hero__breadcrumb span {
-    color: rgba(255, 255, 255, .75);
+    color: #bbb;
 }
 
 /* Title */

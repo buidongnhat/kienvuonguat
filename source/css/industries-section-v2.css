@@ -137,7 +137,7 @@
     display: flex;
     width: max-content;
     gap: 40px;
-    padding: 50px 0;
+    padding: 20px 0;
 }
 
 /* ===================================================================
@@ -152,13 +152,6 @@
     user-select: none;
 }
 
-/* Zig-zag stagger */
-.kv-ind-v2__item:nth-child(odd) {
-    transform: translateY(-30px);
-}
-.kv-ind-v2__item:nth-child(even) {
-    transform: translateY(30px);
-}
 
 /* ── Image wrapper ── */
 .kv-ind-v2__img-wrap {
@@ -273,12 +266,6 @@
     }
     .kv-ind-v2__item {
         width: 240px;
-    }
-    .kv-ind-v2__item:nth-child(odd) {
-        transform: translateY(-15px);
-    }
-    .kv-ind-v2__item:nth-child(even) {
-        transform: translateY(15px);
     }
     .kv-ind-v2::before,
     .kv-ind-v2::after {
